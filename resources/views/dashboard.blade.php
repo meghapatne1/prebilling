@@ -32,8 +32,22 @@ input:focus {
               
                 </div>
 
-     <div class="card-body">
 
+     <div class="card-body">
+               <div class="row text-center">
+                <div class="col-sm-6">
+                <button type="button"  class="box-style" data-toggle="collapse" data-target="#product_id">
+                Product List
+                </button>
+                
+                </div>
+                <div class="col-sm-6">
+                <button type="button"  class="box-style" data-toggle="collapse" data-target="#customer_id">
+                Customer List
+                </button>
+                </div>
+              
+              </div>
 
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
@@ -53,10 +67,11 @@ input:focus {
             </div>
      @endif
 
+<br><br>
 
        <div class="responsive">
         @isset($product_data) 
-            <table class="table table-bordered">
+            <table class="table table-bordered collapse" id="product_id">
             <thead>
             <tr>
             <th>Product Name</th>
@@ -78,7 +93,7 @@ input:focus {
             @endisset
 
             @isset($product_data) 
-            <table class="table table-bordered">
+            <table class="table table-bordered  collapse" id="customer_id">
             <thead>
             <tr>
             <th>Customer Name</th>
