@@ -85,12 +85,18 @@
     <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="list-group list-group-flush">
         <a href="/dashboard" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-        <a href="/add_customer" class="list-group-item list-group-item-action bg-light">Add Customer</a>
-        <a href="/view_customer" class="list-group-item list-group-item-action bg-light">Manage Customer</a>
-        <a href="/customer_history" class="list-group-item list-group-item-action bg-light">Customer History</a>
+        <a href="/add_product" class="list-group-item list-group-item-action bg-light">Add Product</a>
         <a href="/add_pos" class="list-group-item list-group-item-action bg-light">Add Delivery Boy</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+        <a href="/importExportView" class="list-group-item list-group-item-action bg-light">Excel</a>
+        <a style="border-bottom: 1px solid rgba(0, 0, 0, 0.125);" href="#" class="list-group-item list-group-item-action bg-light  dropdown-toggle" data-toggle="dropdown">
+        Manage Customer Data  <span class="caret"></span>
+        <ul style="min-width:15rem;padding:0.0rem 0;" class="dropdown-menu">
+        <a href="/add_customer" class="list-group-item list-group-item-action bg-light">Add Customer</a>
+        <li>  <a href="/addcustomer" class="list-group-item list-group-item-action bg-light">Add Customer2</a></li>
+        <li><a href="/view_customer" class="list-group-item list-group-item-action bg-light">Manage Customer</a></li>
+        <li><a href="/customer_history" class="list-group-item list-group-item-action bg-light">Customer History</a></li>
+        </ul>
+        </a>
       </div>
     </div>
 <!-- Page Content -->

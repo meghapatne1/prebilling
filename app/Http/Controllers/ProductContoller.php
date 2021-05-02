@@ -33,4 +33,10 @@ class ProductContoller extends Controller
         return redirect()->route('add_customers_info')->with('success','You have successfully added your ' .$productcount. ' products now please add your customer.');
     }
     
+ 
+
+
+    
+
+
 }

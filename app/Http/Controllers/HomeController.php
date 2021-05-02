@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Validator;
 Use Exception;
 use Hash;
 use Session;
+use App\Models\Poscustomer;
 
 class HomeController extends Controller
 {
@@ -128,6 +129,7 @@ class HomeController extends Controller
             $customer_info->mobile1 = $request['mobile1'][$key];
             $customer_info->colony = $request['colony'][$key];
             $customer_info->pincode = $request['pincode'][$key];
+            $customer_info->status = 1;
             $user = Auth::user();
             $customer_info->user_mobile = $user->mobile;
             // $customer_info->user_name =  $user->name;
@@ -141,7 +143,6 @@ class HomeController extends Controller
         }
         DB::commit();
         $customer_count= count($count);
-        // dd( $customer_count);
         return redirect()->route('dashboard')->with('success','You have successfully added your '.$customer_count.' Customers');
 
             } catch (Exception $exception) {
@@ -198,7 +199,11 @@ class HomeController extends Controller
     public function edit($id)
     {
         $customerdata = Customer::where('id', $id)->get();
-        return view('editcustomer',compact('customerdata'));
+        foreach($customerdata as $item){
+           $user_number = $item->user_mobile;
+        }
+        $getProduct = DB::table('products')->where('user_mobile','=',$user_number)->get();
+        return view('editcustomer',compact('customerdata','getProduct'));
     }
 
     public function update(Request $request){
@@ -394,6 +399,75 @@ public function editpos($id){
             }
         
        
+    }
+    
+    public function add_product(Request $request){
+   
+        return view('product'); 
+
+    }
+
+    public function saveproduct(Request $request){
+
+            $product = new Product;
+            $product->pro_price = $request->pro_price;
+            $product->pro_name = $request->pro_name;
+            $product->pro_unit = $request->pro_unit;
+            $user = Auth::user();
+            $product->user_mobile = $user->mobile;
+            $product->user_name =  $user->name;
+            $product->save();
+            
+        return redirect()->route('dashboard')->with('success','Product added successfully...');
+
+    }
+
+    public function return_customer(Request $request)
+    {
+        return view('customer_view'); 
+    
+    }
+    
+
+    public function pos_link_customers($mobile_pos)
+    {
+        $get_customers=DB::table('customers')->where('user_mobile','=',Auth::user()->mobile)->get();
+        $mobile=$mobile_pos;
+
+        $get_poscustomers=DB::table('poscustomers')->where('pos_mobile','=',$mobile)->get();
+
+        return view('pos_link_customers',compact('get_customers','mobile','get_poscustomers')); 
+    
+    }
+
+    
+    public function save_pos_customers(Request $request)
+    {
+         $product_data = $request['customer_mobile'];
+         $count=Array();
+         foreach ($product_data as $key => $val) {
+
+         $ge_customer_name=DB::table('customers')->where('mobile1','=',$request['customer_mobile'][$key])
+         ->select('name')->first();
+           $pos_customer = New Poscustomer;
+           $pos_customer->pos_mobile = $request->pos_mobile;
+           $pos_customer->customer_mobile =  $request['customer_mobile'][$key];
+           $pos_customer->customer_name =  $ge_customer_name->name;
+           $user = Auth::user();
+           $pos_customer->user_mobile = $user->mobile;
+           $pos_customer->status = 1;
+           $pos_customer->save();
+           $count[]=$pos_customer;
+           
+         }
+           return redirect()->route('add_pos')->with('success','Customers link to pos successfully');
+         
+    
+    }
+    public function delete_pos_customer($id){
+
+        $pos = Poscustomer::where('id', $id)->delete();
+        return redirect()->route('add_pos')->with('success','Data deleted successfully');
     }
     
 }

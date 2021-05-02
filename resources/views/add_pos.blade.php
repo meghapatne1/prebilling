@@ -74,6 +74,7 @@
                                 <th>Address</th>
                                 <th>Pincode</th>
                                 <th>status</th>
+                                <th>Link To Customer</th>
                                 <th>Action</th>
                             </tr>
                     </thead>
@@ -92,12 +93,13 @@
                                 @else
                                 <td>Deactive</td>
                                 @endif
-                             
+                                <td><a href="/pos_link_customers/{{$item->mobile}}"> Link to customer</a></td> 
                                 <td>
                                 <a href="/deletepos/{{$item->id}}"  class="btn btn-danger btn-sm">Delete</a>
                                 <a href="/editpos/{{$item->id}}" class="btn btn-primary btn-sm mb-1" >Edit</a>
-                                
-                                </td>    
+                                </td>   
+
+                              
                             </tr>
                          @endforeach  
                     </tbody>

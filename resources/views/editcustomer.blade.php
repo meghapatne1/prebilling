@@ -87,10 +87,18 @@
     </div>
     
     <div class="form-group">
-    <lable class="lable-style">Product Name</lable>
-    
-        <input name="product_name" type="text" class="form-control" value="{{ $item->product_name }}">
-        <input name="id" type="hidden" class="form-control" value="{{ $item->id }}">
+    <lable class="lable-style"> Select Product Name</lable>
+        <select name="product_name" class="form-control" id="sel1">
+        @foreach($getProduct as $product)
+        @if($product->pro_name ==  $item->product_name )
+        <option value="{{ $product->pro_name }}" selected>{{ $product->pro_name }}</option>
+        @else
+        <option value="{{ $product->pro_name }}">{{ $product->pro_name }}</option>
+        @endif
+        @endforeach
+        </select>
+        <!-- <input name="product_name" type="text" class="form-control" value="{{ $item->product_name }}"> -->
+ 
     </div>
     
 
@@ -114,6 +122,7 @@
   -->
 
     <div class="form-group" style="text-align: center;width:30%;">
+    <input name="id" type="hidden" class="form-control" value="{{ $item->id }}">
             <input name="submit" type="submit" class="form-control btn btn-info text-white" value="Update Account">
         </div>
     @endforeach

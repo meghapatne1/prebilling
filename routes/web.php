@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductContoller;
+use App\Http\Controllers\MyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,6 +64,26 @@ Route::get('/deletepos/{id}', [App\Http\Controllers\HomeController::class, 'dele
 Route::get('/editpos/{id}', [App\Http\Controllers\HomeController::class, 'editpos'])->name('editpos');
 Route::post('/update_pos', [App\Http\Controllers\HomeController::class, 'updatepos'])->name('update_pos');
 
+
+//excel
+Route::get('importExportView', [MyController::class, 'importExportView']);
+Route::get('export', [MyController::class, 'export'])->name('export');
+Route::post('import', [MyController::class, 'import'])->name('import');
+
+
+//add_product
+Route::get('/add_product', [App\Http\Controllers\HomeController::class, 'add_product'])->name('add_product');
+Route::post('/saveproduct', [App\Http\Controllers\HomeController::class, 'saveproduct'])->name('saveproduct');
+
+//customer
+
+Route::get('/addcustomer', [App\Http\Controllers\HomeController::class, 'return_customer'])->name('addcustomer');
+
+//pos
+Route::get('/pos_link_customers/{mobile}', [App\Http\Controllers\HomeController::class, 'pos_link_customers'])->name('pos_link_customers');
+Route::post('/save_pos_customers', [App\Http\Controllers\HomeController::class, 'save_pos_customers'])->name('save_pos_customers');
+
+Route::get('/delete_pos_customer/{id}', [App\Http\Controllers\HomeController::class, 'delete_pos_customer'])->name('delete_pos_customer');
 
 });
 
