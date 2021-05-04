@@ -33,18 +33,28 @@ outline: none;
 
 
                     @if ($message = Session::get('status'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
+                        <div class="alert alert-success">
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
 
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
                     
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                            </div>
+                    @endif
+
         <form action="/save_product" method="post">
         @csrf
             <div id="InputsWrapper">
                 <div>
                     <input type="text" class="boxes" placeholder="Enter Product Name" name="pro_name[]" id="field_1" value="" required>
-                    <input type="text" class="boxes" placeholder="Enter Price" name="pro_price[]" value="" required>
+                    <input type="number" class="boxes" placeholder="Enter Price" name="pro_price[]" value="" required>
                     <input type="text" class="boxes" placeholder="Measurement Unit" name="pro_unit[]" value="" required>
                     <input type="submit" id="submit" name="submit" class="btn-submit" value="Submit">
 
@@ -52,9 +62,7 @@ outline: none;
             </div>
             <br>
             <br><br>
-            <!-- <div id="AddMoreFileId">
-                <a href="#" id="AddMoreFileBox" style="color:white;" class="btn btn-success">+Add More</a><br><br>
-            </div> -->
+         
             <a href="/add_customers_info" style="color:white;" class="btn btn-success">Skip/Add Customer</a>
 
             <div id="lineBreak"></div>

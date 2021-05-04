@@ -26,8 +26,23 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
+    // protected $redirectTo = RouteServiceProvider::HOME;
+   
+       
+    public function redirectto()
+    {
+        if (auth()->user()->is_admin == 1) {
+            return 'home';
+        }
+        if(auth()->user()->is_admin == 2){
+            return 'poshome';
+        }
+        if(auth()->user()->is_admin == 3){
+            return 'customerhome';
+        }
+       
+            // return redirect()->route('home3')->with('error','Mobile Number And Password Are Wrong.');;
+       }
     /**
      * Create a new controller instance.
      *

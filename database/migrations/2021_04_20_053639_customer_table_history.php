@@ -15,8 +15,7 @@ class CustomerTableHistory extends Migration
     {
         Schema::create('customer_histories', function (Blueprint $table) {
             $table->id();
-            $table->string("customer_firstname")->nullable();
-            $table->string("customer_lastname")->nullable();
+            $table->string("customer_name")->nullable();
             $table->string("product_name")->nullable();
             $table->bigInteger("cost_of_per_token")->nullable();
             $table->bigInteger("no_of_token_utilized")->nullable();
@@ -24,7 +23,8 @@ class CustomerTableHistory extends Migration
             $table->bigInteger("total_token")->nullable();
             $table->bigInteger("user_id")->nullable();
             $table->Integer("customer_id")->nullable();
-            $table->bigInteger("mobile1")->nullable();
+            $table->bigInteger("customer_mobile")->nullable();
+            $table->bigInteger("user_mobile")->nullable();
             $table->timestamps();
         });
     }

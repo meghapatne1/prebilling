@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use DB;
 use Auth;
-
+use Illuminate\Support\Facades\Validator;
+Use Exception;
 
 class ProductContoller extends Controller
 {
@@ -16,8 +17,16 @@ class ProductContoller extends Controller
     }
     public function saveproduct(Request $request)
     {
+
+        $request->validate([
+            'pro_name.*' => 'required',
+            'pro_price.*' => 'required |integer',
+            'pro_unit.*' => 'required',
+        ]);
+
         $product_data = $request['pro_price'];
         $count=Array();
+     
         foreach ($product_data as $key => $val) {
             $product = new Product;
             $product->pro_price = $request['pro_price'][$key];
@@ -25,7 +34,6 @@ class ProductContoller extends Controller
             $product->pro_unit = $request['pro_unit'][$key];
             $user = Auth::user();
             $product->user_mobile = $user->mobile;
-            $product->user_name =  $user->name;
             $product->save();
             $count[]=$product;
         }

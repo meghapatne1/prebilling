@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name')->nullable();
             $table->string('email')->unique()->nullable();
             $table->bigInteger('mobile')->unique();
-            $table->boolean('is_admin')->nullable(); //1=Admin,2=Customer, 3=delivery boy
+            $table->boolean('is_admin')->nullable(); //1=Admin,2=delivery 3=Customer,
             $table->string('merchant_type')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

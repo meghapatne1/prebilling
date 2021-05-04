@@ -34,19 +34,18 @@ input:focus {
 
 
      @if ($errors->any())
-        <div class="alert alert-danger">
-      
+      <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
         </ul>
-            </div>
+       </div>
      @endif
 
      @if (session('error'))
-<div class="alert alert-danger">{{ session('error') }}</div>
-@endif
+       <div class="alert alert-danger">{{ session('error') }}</div>
+     @endif
             <div class="card">
                 <div class="card-header">
                     
@@ -62,9 +61,9 @@ input:focus {
                 <div>
                     <input type="text" placeholder="Customer Name" class="boxes" name="name[]" id="field_1" value="" required>
                     <input type="text" placeholder="Customer Address" class="boxes" name="address[]" value="" required>
-                    <input type="text" placeholder="Customer Mobile" class="boxes" name="mobile1[]" value="" required>
+                    <input type="number" placeholder="Customer Mobile" class="boxes" name="mobile1[]" value="" required>
                     <input type="text" placeholder="Customer Colony" class="boxes" name="colony[]" value="" required>
-                    <input type="text" placeholder="Customer Pincode" class="boxes" name="pincode[]" value="" required>
+                    <input type="number" placeholder="Customer Pincode"  class="boxes" name="pincode[]" value="" required>
                     <input type="submit"  name="submit" class="btn-submit" value="Submit">
 
                    

@@ -33,7 +33,7 @@
         @foreach ($customerdata as $item)
         <tr>
             <td>{{ ++$i }}</td>
-            <td>{{ $item->first_name }}{{ $item->last_name }}</td>
+            <td>{{ $item->name }}</td>
             <td>{{ $item->mobile1 }}</td>
             <td>{{ $item->amount }}</td>
             <td>{{ $item->cost_of_per_token }}</td>
