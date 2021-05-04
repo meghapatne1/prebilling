@@ -91,8 +91,8 @@
         <a style="border-bottom: 1px solid rgba(0, 0, 0, 0.125);" href="#" class="list-group-item list-group-item-action bg-light  dropdown-toggle" data-toggle="dropdown">
         Manage Customer Data  <span class="caret"></span>
         <ul style="min-width:15rem;padding:0.0rem 0;" class="dropdown-menu">
-        <a href="/add_customer" class="list-group-item list-group-item-action bg-light">Add Customer</a>
-        <li>  <a href="/addcustomer" class="list-group-item list-group-item-action bg-light">Add Customer2</a></li>
+        <!-- <a href="/add_customer" class="list-group-item list-group-item-action bg-light">Add Customer</a> -->
+        <li>  <a href="/addcustomer" class="list-group-item list-group-item-action bg-light">Add Customer</a></li>
         <li><a href="/view_customer" class="list-group-item list-group-item-action bg-light">Manage Customer</a></li>
         <li><a href="/customer_history" class="list-group-item list-group-item-action bg-light">Customer History</a></li>
         </ul>

@@ -29,10 +29,10 @@
 
   
             <div class="card">
-                <div class="card-header">{{ __('EDIT POS') }}</div>
+                <div class="card-header">{{ __('EDIT PRODUCT') }}</div>
                 <div class="card-body">
-                @foreach($get_pos as $item)
-                <form action="{{ route('update_pos') }}" method="POST">
+                @foreach($product_data as $item)
+                <form action="{{ route('update_product') }}" method="POST">
                      @csrf
                     <div class="row">
                     <div class="col-lg-6 col-md-6  col-sm-6 col-xs-12">
@@ -40,37 +40,22 @@
                         <div class="input-group">
                         <div><lable class="lable-style">Name </lable></div>
                                 <i class="fa fa-user-o icon"></i>
-                            <input name="name"  type="text" class="form-control" value="{{$item->name}}" required>
+                            <input name="pro_name"  type="text" class="form-control" value="{{$item->pro_name}}" required>
                         </div>
                       
-                        <!-- <div class="input-group">
-                           <i class="ion-social-whatsapp-outline icon" style="font-size:18px;"></i>
-                            <input name="mobile" type="text" class="form-control" value="{{$item->mobile}}"  minlength="10" required="">
-                        </div> -->
-
+                     
                         <div class="input-group">
-                        <lable class="lable-style">Address </lable>
+                        <lable class="lable-style">Price </lable>
                            <i class="fa fa-vcard-o icon"></i>
-                            <input name="address" type="text" class="form-control" value="{{$item->address}}" >
+                            <input name="pro_price" type="number" class="form-control" value="{{$item->pro_price}}" >
                         </div>
                        
                         <div class="input-group">
-                        <lable  class="lable-style">City </lable>
+                        <lable  class="lable-style">Unit </lable>
                         <i class="ion-ios-home-outline icon" style="font-size:20px;"></i>
-                            <input name="city" type="text" class="form-control" value="{{$item->city}}" required="">
+                            <input name="pro_unit" type="text" class="form-control" value="{{$item->pro_unit}}" required="">
                         </div>
-                       
-                        <div class="input-group">
-                        <lable  class="lable-style">Pincode </lable>
-                           <i class="ion-social-whatsapp-outline icon" style="font-size:18px;"></i>
-                            <input name="pincode" type="text" class="form-control" value="{{$item->pincode}}" minlength="6">
-                        </div>
-                        <div class="input-group">
-                        <lable  class="lable-style">Status </lable>
-                           <i class="ion-social-whatsapp-outline icon" style="font-size:18px;"></i>
-                            <input name="status" type="text" class="form-control" value="{{$item->status}}" >
-                        </div>
-                        <div class="input-group" style="width:30%;">
+                    
                         <input name="id" type="hidden"  value="{{$item->id}}">
                             <input name="update" class="btn btn-info" type="submit" class="form-control" value="Update" >
                         </div>

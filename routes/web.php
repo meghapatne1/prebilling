@@ -19,13 +19,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
- Auth::routes();
+Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('is_admin');
+
+Route::get('/home3', [App\Http\Controllers\HomeController::class, 'home3'])->name('home3');
+
+Route::middleware(['is_customer'])->group(function () {
 Route::get('/customerhome', [App\Http\Controllers\HomeController::class, 'customerHome'])->name('customerhome');
+});
 
+Route::middleware(['is_pos'])->group(function () {
 
+Route::get('/poshome', [App\Http\Controllers\HomeController::class, 'posHome'])->name('poshome');
 
+});
 
 Route::middleware(['is_admin'])->group(function () {
 
@@ -35,10 +42,6 @@ Route::get('/add_customers_info', [App\Http\Controllers\HomeController::class, '
 Route::post('/save_customers_info', [App\Http\Controllers\HomeController::class, 'customers_info'])->name('save_customers_info');
 Route::get('/update_user_profile', [App\Http\Controllers\HomeController::class, 'update_profile_user'])->name('update_user_profile');
 Route::post('/save_user_profile', [App\Http\Controllers\HomeController::class, 'save_user_profile'])->name('save_user_profile');
-
-
-
-
 
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'return_dashboard'])->name('dashboard');
@@ -74,6 +77,10 @@ Route::post('import', [MyController::class, 'import'])->name('import');
 //add_product
 Route::get('/add_product', [App\Http\Controllers\HomeController::class, 'add_product'])->name('add_product');
 Route::post('/saveproduct', [App\Http\Controllers\HomeController::class, 'saveproduct'])->name('saveproduct');
+Route::get('/deleteproduct/{id}', [App\Http\Controllers\HomeController::class, 'deleteproduct'])->name('deleteproduct');
+Route::get('/editproduct/{id}', [App\Http\Controllers\HomeController::class, 'editproduct'])->name('editproduct');
+Route::post('/update_product', [App\Http\Controllers\HomeController::class, 'updateproduct'])->name('update_product');
+
 
 //customer
 

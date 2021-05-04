@@ -31,6 +31,10 @@ input:focus {
     @endif
 
 
+    @if (session('error'))
+        <div class="alert alert-danger">{{ session('error') }}</div>
+    @endif
+    
      @if ($errors->any())
         <div class="alert alert-danger">
       
@@ -78,6 +82,7 @@ input:focus {
             <th>Product Name</th>
             <th>Price</th>
             <th>Unit</th>
+            <th>Action</th>
             </tr>
             </thead>
             <tbody>
@@ -86,6 +91,11 @@ input:focus {
             <td>{{$item->pro_name}}</td>
             <td>{{$item->pro_price}}</td>
             <td>{{$item->pro_unit}}</td>
+            <td>
+            <a class="btn btn-info" href="/deleteproduct/{{$item->id}}">Delete</a>
+            <a class="btn btn-info" href="/editproduct/{{$item->id}}">Edit</a>
+            </td>
+       
             </tr>
             @endforeach
             </tbody>

@@ -59,31 +59,31 @@
     <div class="form-group">
     <lable class="lable-style">Amount</lable>
     
-        <input name="amount" type="text" class="form-control" value="{{ $item->amount }}">
+        <input name="amount" type="number" class="form-control" value="{{ $item->amount }}">
     </div>
     
     <div class="form-group">
     <lable class="lable-style">Utilized Token</lable>
        
-        <input name="no_of_token_utilized" type="text" class="form-control" value="{{ $item->no_of_token_utilized }}">
+        <input name="no_of_token_utilized" type="number" class="form-control" value="{{ $item->no_of_token_utilized }}">
     </div>
 
     <div class="form-group">
     <lable class="lable-style">Total tokan</lable>
       
-        <input name="total_token" type="text" class="form-control" value="{{ $item->total_token }}">
+        <input name="total_token" type="number" class="form-control" value="{{ $item->total_token }}">
     </div>
 
     <div class="form-group">
     <lable class="lable-style">Cost Of Per Token</lable>
     
-        <input name="cost_of_per_token" type="text" class="form-control" value="{{ $item->cost_of_per_token }}">
+        <input name="cost_of_per_token" type="number" class="form-control" value="{{ $item->cost_of_per_token }}">
     </div>
 
     <div class="form-group">
     <lable class="lable-style">Remaining Token</lable>
     
-        <input name="remaning_token" type="text" class="form-control" value="{{ $item->remaning_token }}">
+        <input name="remaning_token" type="number" class="form-control" value="{{ $item->remaning_token }}">
     </div>
     
     <div class="form-group">
@@ -97,41 +97,23 @@
         @endif
         @endforeach
         </select>
-        <!-- <input name="product_name" type="text" class="form-control" value="{{ $item->product_name }}"> -->
  
     </div>
-    
 
     <div class="form-group">
     <lable class="lable-style">Token Valid Upto</lable>
-    
-        <input name="token_expire_date" type="date" class="form-control" value="{{ $item->token_expire_date }}">
+    <input name="token_expire_date" type="date" class="form-control" value="{{ $item->token_expire_date }}">
     </div>
-<!-- 
-    <div class="form-group">
-    <lable class="lable-style">Start Date</lable>
-    
-        <input name="start_date" type="date" class="form-control" value="{{ $item->start_date }}">
-    </div>
-
-    <div class="form-group">
-    <lable class="lable-style">End Date</lable>
-    
-        <input name="end_date" type="date" class="form-control" value="{{ $item->end_date }}">
-    </div>
-  -->
 
     <div class="form-group" style="text-align: center;width:30%;">
     <input name="id" type="hidden" class="form-control" value="{{ $item->id }}">
-            <input name="submit" type="submit" class="form-control btn btn-info text-white" value="Update Account">
-        </div>
+    <input name="submit" type="submit" class="form-control btn btn-info text-white" value="Update Account">
+    </div>
     @endforeach
     </form>
      </div>
     </div>
     </div>
-
-
 
     <!-- add customer profile -->
     <div class="card-body collapse" id="customer_profile"> 
@@ -150,12 +132,6 @@
         <input name="name" type="text" class="form-control" value="{{ $item->name }}">
     </div>
    
-    <!-- <div class="form-group">
-    <lable class="lable-style">Mobile</lable>
-        <i class="fa fa-money icon" style="font-size:18px;" ></i>
-        <input name="mobile1" type="text" class="form-control" value="{{ $item->mobile1 }}">
-    </div> -->
- 
     <div class="form-group">
     <lable class="lable-style">Address</lable>
     
@@ -165,13 +141,13 @@
     <div class="form-group">
     <lable class="lable-style">Pincode</lable>
     
-        <input name="pincode" type="text" class="form-control" value="{{ $item->pincode }}">
+        <input name="pincode" type="number" class="form-control" value="{{ $item->pincode }}">
     </div>
 
     <div class="form-group">
     <lable class="lable-style">Status</lable>
     
-        <input name="status" type="text" class="form-control" value="{{ $item->status }}">
+        <input name="status" type="number" class="form-control" value="{{ $item->status }}">
     </div>
     
     

@@ -29,8 +29,14 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
+    // protected $redirectTo = RouteServiceProvider::HOME;
+    public function redirectto()
+    {
+        if (auth()->user()->is_admin == 1) {
+            return 'home';
+        } 
+            // return redirect()->route('home3')->with('error','Mobile Number And Password Are Wrong.');;
+       }
     /**
      * Create a new controller instance.
      *
@@ -57,6 +63,7 @@ class RegisterController extends Controller
             'mobile' => ['required', 'numeric', 'min:10', 'unique:users'],
 
         ]);
+        
     }
 
     /**
@@ -73,6 +80,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             // 'merchant_type' => $data['merchant_type'],
             'mobile' => $data['mobile'],
+            'is_admin' => 1,
         ]);
     }
 }

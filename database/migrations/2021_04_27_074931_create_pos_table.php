@@ -21,7 +21,6 @@ class CreatePosTable extends Migration
             $table->string("address")->nullable();
             $table->string("city")->nullable();
             $table->boolean("status")->nullable()->default(1);
-            $table->string("user_name")->nullable();
             $table->bigInteger("user_mobile")->nullable();
             $table->timestamps();
         });

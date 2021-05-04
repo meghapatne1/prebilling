@@ -51,6 +51,19 @@ class HomeController extends Controller
         return view('customerHome');
     }
     
+    
+    public function poshome()
+    {
+        $pos_user_mobile= Auth::user()->mobile;
+        $pos_user_info = DB::table('pointofsales')->where('mobile','=',$pos_user_mobile)->get();
+        $pos_customers = DB::table('poscustomers')->where('pos_mobile','=',$pos_user_mobile)->get();
+    
+        return view('posHome',compact('pos_user_info','pos_customers'));
+    }
+    public function home3()
+    {
+        return view('home3');
+    }
 
     public function return_dashboard()
     {
@@ -102,8 +115,7 @@ class HomeController extends Controller
 
     public function customers_info(Request $request) //save customers info
     {
-
-
+      
         DB::beginTransaction();
         try{
         $product_data = $request['name'];
@@ -113,16 +125,8 @@ class HomeController extends Controller
                $mobile_exist = DB::table('users')->where('mobile','=',$request['mobile1'][$key])->get();
                if(count($mobile_exist) > 0){
                 return back()->withError('Duplicate Mobile Number Not Allow ' . $request['mobile1'][$key])->withInput();
-               }
-
-            //    $mobile_exist_ust = DB::table('customers')->where('mobile1','=',$request['mobile1'][$key])->get();
-            //    if(count($mobile_exist_ust) > 0){
-            //     return back()->withError('Duplicate Mobile Number Not Allow ' . $request['mobile1'][$key])->withInput();
-            //    }
-
+            }
            //End validation for user table mobile number
-
-           
             $customer_info = new Customer;
             $customer_info->name = $request['name'][$key];
             $customer_info->address = $request['address'][$key];
@@ -132,12 +136,12 @@ class HomeController extends Controller
             $customer_info->status = 1;
             $user = Auth::user();
             $customer_info->user_mobile = $user->mobile;
-            // $customer_info->user_name =  $user->name;
             $customer_info->save();
             $user_table = new User;
             $user_table->name = $request['name'][$key];
             $user_table->mobile = $request['mobile1'][$key];
-            $user_table->password = 11111111;
+            $user_table->password = Hash::make(11111111);
+            $user_table->is_admin = 3;
             $user_table->save();
             $count[]=$customer_info;
         }
@@ -145,10 +149,10 @@ class HomeController extends Controller
         $customer_count= count($count);
         return redirect()->route('dashboard')->with('success','You have successfully added your '.$customer_count.' Customers');
 
-            } catch (Exception $exception) {
-                DB::rollback();
-                return back()->withError( $exception->getMessage())->withInput();
-            }
+        } catch (Exception $exception) {
+            DB::rollback();
+            return back()->withError( $exception->getMessage())->withInput();
+        }
       
     }
 
@@ -192,9 +196,23 @@ class HomeController extends Controller
 
     public function delete( $id)
     {
+        DB::beginTransaction();
+        try{
+        $customer_mobile = Customer::where('id', $id)->select('mobile1')->first();
         $customer = Customer::where('id', $id)->delete();
+        $user = User::where('mobile', $customer_mobile->mobile1)->delete();
+        DB::commit();
+
         return redirect()->route('view_customer')->with('success','Customer deleted successfully');
-    }
+
+        } catch (Exception $exception) {
+
+            DB::rollback();
+           
+            return back()->withError( $exception->getMessage())->withInput();
+        }
+    
+        }
 
     public function edit($id)
     {
@@ -247,15 +265,14 @@ class HomeController extends Controller
         $customer_data->save();
         $customer_history = New Customer_history;
         $customer_history->customer_id=$customer_data->id;
-        $customer_history->customer_firstname=$customer_data->first_name;
-        $customer_history->customer_lastname=$customer_data->last_name;
-        $customer_history->mobile1=$customer_data->mobile1;
+        $customer_history->customer_name=$customer_data->name;
+        $customer_history->customer_mobile=$customer_data->mobile1;
         $customer_history->product_name=$customer_data->product_name;
         $customer_history->cost_of_per_token=$customer_data->cost_of_per_token;
         $customer_history->no_of_token_utilized=$customer_data->no_of_token_utilized;
         $customer_history->remaning_token=$customer_data->remaning_token;
         $customer_history->total_token=$customer_data->total_token;
-        
+        $customer_history->user_mobile= Auth::user()->mobile;
         $user = Auth::user();
         $customer_history->user_id=$user->id;
         $customer_history->save();
@@ -277,7 +294,7 @@ class HomeController extends Controller
     }
     public function customerhistory(Request $request){
 
-        $customer_history_data= DB::table('customer_histories')->get();
+        $customer_history_data= DB::table('customer_histories')->where('user_mobile','=', Auth::user()->mobile)->get();
         return view('customerHistory',compact('customer_history_data'));
         
     }
@@ -292,6 +309,13 @@ class HomeController extends Controller
     
     public function savepos(Request $request){
 
+        $request->validate([
+            'name' => 'required',
+            'address' => 'required',
+            'mobile' => 'required|integer|min:10',
+            'pincode' => 'required|integer|min:6',
+        ]);
+
         DB::beginTransaction();
         try{
            //validation for user table mobile number
@@ -299,12 +323,6 @@ class HomeController extends Controller
                if(count($mobile_exist) > 0){
                 return back()->withError('Duplicate Mobile Number Not Allow ' . $request->mobile)->withInput();
                }
-
-            //    $mobile_exist_pos = DB::table('pointofsales')->where('mobile','=',$request->mobile)->get();
-           
-            //    if(count($mobile_exist_pos) > 0){
-            //     return back()->withError('Duplicate Mobile Number Not Allow ' . $request->mobile)->withInput();
-            //    }
 
            //End validation for user table mobile number           
             $poinofsales = New Pointofsale;
@@ -316,18 +334,16 @@ class HomeController extends Controller
             $poinofsales->status = 1;
             $user = Auth::user();
             $poinofsales->user_mobile = $user->mobile;
-            // $poinofsales->user_name =  $user->name;
             $poinofsales->save();
-           
             $user_table = new User;
             $user_table->name = $request->name;
             $user_table->mobile = $request->mobile;
-            $user_table->password = 11111111;
+            $user_table->password = Hash::make(11111111);
+            $user_table->is_admin = 2;
             $user_table->save();
-        
-             DB::commit();
-    
-             return redirect()->route('add_pos')->with('success','your data added successfully');
+            DB::commit();
+
+            return redirect()->route('add_pos')->with('success','your data added successfully');
 
             } catch (Exception $exception) {
 
@@ -340,9 +356,18 @@ class HomeController extends Controller
     
 
     public function deletepos($id){
+        DB::beginTransaction();
+        try{
+        $pos_mobile = Pointofsale::where('id', $id)->select('mobile')->first();
         $pos = Pointofsale::where('id', $id)->where('user_mobile', Auth::user()->mobile)->delete();
-    
+        $User = User::where('mobile',$pos_mobile->mobile)->delete();
+        DB::commit();
         return redirect()->route('add_pos')->with('success','Data deleted successfully');
+        
+        } catch (Exception $exception) {
+            DB::rollback();
+            return back()->withError($exception->getMessage())->withInput();
+        }
     }
 
     
@@ -356,40 +381,25 @@ public function editpos($id){
 
     public function updatepos(Request $request){
 
+        $request->validate([
+            'name' => 'required',
+            'address' => 'required',
+            'pincode' => 'required|integer|min:6',
+        ]); 
         DB::beginTransaction();
-        try{
-           //validation for user table mobile number
-            //    $mobile_exist = DB::table('users')->where('mobile','=',$request->mobile)->get();
-            //    if(count($mobile_exist) > 0){
-            //     return back()->withError('Duplicate Mobile Number Not Allow ' . $request->mobile)->withInput();
-            //    }
-
-            //    $mobile_exist_pos = DB::table('pointofsales')->where('mobile','=',$request->mobile)->get();
-           
-            //    if(count($mobile_exist_pos) > 0){
-            //     return back()->withError('Duplicate Mobile Number Not Allow ' . $request->mobile)->withInput();
-            //    }
-
+        try{  
            //End validation for user table mobile number           
             $poinofsales = Pointofsale::find($request->id);
             $poinofsales->name = $request->name;
             $poinofsales->address = $request->address;
-            // $poinofsales->mobile = $request->mobile;
             $poinofsales->city = $request->city;
             $poinofsales->pincode = $request->pincode;
             $poinofsales->status = $request->status;
             $user = Auth::user();
             $poinofsales->user_mobile = $user->mobile;
-            $poinofsales->user_name =  $user->name;
-            $poinofsales->save();
-            
-            // $user_table = Pointofsale::find($request->id);  worked on later
-            // $user_table->mobile = $request->mobile;
-            // $user_table->save();
-         
+            $poinofsales->save();    
              DB::commit();
-    
-             return redirect()->route('add_pos')->with('success','data updated successfully');
+            return redirect()->route('add_pos')->with('success','data updated successfully');
 
             } catch (Exception $exception) {
 
@@ -409,13 +419,18 @@ public function editpos($id){
 
     public function saveproduct(Request $request){
 
+                $request->validate([
+                    'pro_name' => 'required',
+                    'pro_price' => 'required |integer',
+                    'pro_unit' => 'required',
+                ]);
+
             $product = new Product;
             $product->pro_price = $request->pro_price;
             $product->pro_name = $request->pro_name;
             $product->pro_unit = $request->pro_unit;
             $user = Auth::user();
             $product->user_mobile = $user->mobile;
-            $product->user_name =  $user->name;
             $product->save();
             
         return redirect()->route('dashboard')->with('success','Product added successfully...');
@@ -443,31 +458,51 @@ public function editpos($id){
     
     public function save_pos_customers(Request $request)
     {
+        $request->validate([
+            'customer_mobile' => 'required',
+        ]); 
          $product_data = $request['customer_mobile'];
+       
          $count=Array();
          foreach ($product_data as $key => $val) {
-
-         $ge_customer_name=DB::table('customers')->where('mobile1','=',$request['customer_mobile'][$key])
+         $get_customer_name=DB::table('customers')->where('mobile1','=',$request['customer_mobile'][$key])
          ->select('name')->first();
            $pos_customer = New Poscustomer;
            $pos_customer->pos_mobile = $request->pos_mobile;
            $pos_customer->customer_mobile =  $request['customer_mobile'][$key];
-           $pos_customer->customer_name =  $ge_customer_name->name;
+           $pos_customer->customer_name =  $get_customer_name->name;
            $user = Auth::user();
            $pos_customer->user_mobile = $user->mobile;
            $pos_customer->status = 1;
            $pos_customer->save();
            $count[]=$pos_customer;
-           
          }
            return redirect()->route('add_pos')->with('success','Customers link to pos successfully');
-         
-    
     }
-    public function delete_pos_customer($id){
 
+    public function delete_pos_customer($id){
         $pos = Poscustomer::where('id', $id)->delete();
         return redirect()->route('add_pos')->with('success','Data deleted successfully');
     }
     
+    
+    public function deleteproduct($id){
+        $product = Product::where('id', $id)->delete();
+        return redirect()->route('dashboard')->with('success','Product deleted successfully');
+    }
+    
+    public function editproduct($id){
+        $product_data= Product::where('id', $id)->get();
+        return view('edit_product',compact('product_data'));
+     }
+     public function updateproduct(Request $request){
+        $product= Product::find($request->id);
+        $product->pro_name = $request->pro_name;
+        $product->pro_price = $request->pro_price;
+        $product->pro_unit = $request->pro_unit;
+        $product->save();
+        return redirect()->route('dashboard')->with('success','Product updated successfully');
+     }
+    
+     
 }
