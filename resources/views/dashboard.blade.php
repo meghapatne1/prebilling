@@ -103,7 +103,7 @@ input:focus {
            
             @endisset
 
-            @isset($product_data) 
+            @isset($customer_data) 
             <table class="table table-bordered  collapse" id="customer_id">
             <thead>
             <tr>

@@ -47,8 +47,10 @@ class HomeController extends Controller
 
     public function customerHome()
     {
-       
-        return view('customerHome');
+          
+          $customer=DB::table('customers')->where('mobile1','=',Auth::user()->mobile)->first();
+         
+          return view('CustomerDashboard',compact('customer'));
     }
     
     
@@ -58,7 +60,7 @@ class HomeController extends Controller
         $pos_user_info = DB::table('pointofsales')->where('mobile','=',$pos_user_mobile)->get();
         $pos_customers = DB::table('poscustomers')->where('pos_mobile','=',$pos_user_mobile)->get();
     
-        return view('posHome',compact('pos_user_info','pos_customers'));
+        return view('PosDashboard',compact('pos_user_info','pos_customers'));
     }
     public function home3()
     {
