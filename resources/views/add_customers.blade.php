@@ -77,27 +77,6 @@ input:focus {
             <div id="lineBreak"></div>
            
         </form>
-        @isset($product_get) 
-            <table>
-            <thead>
-            <tr>
-            <th>Product Name</th>
-            <th>Price</th>
-            <th>Unit</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($product_get as $item)
-            <tr>
-            <td>{{$item->pro_name}}</td>
-            <td>{{$item->pro_price}}</td>
-            <td>{{$item->pro_unit}}</td>
-            </tr>
-            @endforeach
-            </tbody>
-            </table>
-           
-            @endisset
                 </div>
             </div>
         </div>
