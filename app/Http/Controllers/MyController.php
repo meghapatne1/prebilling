@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
     
 use Illuminate\Http\Request;
-use App\Exports\UsersExport;
-use App\Imports\UsersImport;
+use App\Exports\ProductExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\ProductImport;
 
 class MyController extends Controller
 {
@@ -13,26 +13,30 @@ class MyController extends Controller
         /**
         * @return \Illuminate\Support\Collection
         */
-        public function importExportView()
-        {
-           return view('import');
-        }
-         
+     
         /**
         * @return \Illuminate\Support\Collection
         */
         public function export() 
         {
-            return Excel::download(new UsersExport, 'users.xlsx');
+            return Excel::download(new ProductExport, 'users.xlsx');
         }
          
         /**
         * @return \Illuminate\Support\Collection
         */
-        public function import() 
+
+        public function importProduct() 
         {
-            Excel::import(new UsersImport,request()->file('file'));
-                 
-            return back();
+            if(request()->file('file') == Null){
+             
+                return back()->withError('Please Select File')->withInput();
+
+            }
+            Excel::import(new ProductImport,request()->file('file'));
+          
+            return redirect()->back()->with('success','Product saved successfully...');
+        
         }
+        
 }

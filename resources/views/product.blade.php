@@ -31,7 +31,7 @@ outline: none;
                 <div class="card-body">
 
 
-                    @if ($message = Session::get('status'))
+    @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
@@ -66,7 +66,14 @@ outline: none;
            
         
         </form>
-        
+        <br>
+        <form action="{{ route('importProduct') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="file" name="file" class="form-control">
+                <br>
+                <button class="btn btn-success">Import Product Data</button>
+                <a class="btn btn-warning" href="{{ route('export') }}">Export Product Data</a>
+            </form>
                 </div>
             </div>
         </div>
