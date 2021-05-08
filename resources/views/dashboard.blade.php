@@ -1,18 +1,8 @@
-@extends('layouts.app2')
+@extends('layouts.app3')
 @section('content')
 
 <style>
-* { font-family:Arial; }
-a {
-color:#999; text-decoration: none;
-}
-a:hover { color:#802727; }
-input { 
- padding:5px;
- border:1px solid #999;
- border-radius:4px;
-  }
-/* new css */
+
 
 input:focus {
     outline: none;
