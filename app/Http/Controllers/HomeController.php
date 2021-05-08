@@ -49,8 +49,8 @@ class HomeController extends Controller
     {
           
           $customer=DB::table('customers')->where('mobile1','=',Auth::user()->mobile)->first();
-         
-          return view('CustomerDashboard',compact('customer'));
+          $customer_history=DB::table('customer_histories')->where('customer_mobile','=',Auth::user()->mobile)->get();
+          return view('CustomerDashboard',compact('customer','customer_history'));
     }
     
     
@@ -271,7 +271,7 @@ class HomeController extends Controller
         $customer_history->customer_mobile=$customer_data->mobile1;
         $customer_history->product_name=$customer_data->product_name;
         $customer_history->cost_of_per_token=$customer_data->cost_of_per_token;
-        $customer_history->no_of_token_utilized=$customer_data->no_of_token_utilized;
+        $customer_history->no_of_token_utilized=$request->no_of_token_utilized;
         $customer_history->remaning_token=$customer_data->remaning_token;
         $customer_history->total_token=$customer_data->total_token;
         $customer_history->user_mobile= Auth::user()->mobile;
