@@ -72,8 +72,8 @@ $(AddButton).click(function (e) {
     <div id="app">
         <nav class="navbar navbar-expand-md shadow-sm" style="background-color:#325ca8;">
             <div class="container">
-                   <span class="text-white"> {{ config('app.name', 'Laravel') }}</span>
-                <span class="head_title"></span>
+                   <span class="text-white head_title"> {{ config('app.name', 'Laravel') }}</span>
+               
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
