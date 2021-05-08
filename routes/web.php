@@ -69,7 +69,6 @@ Route::post('/update_pos', [App\Http\Controllers\HomeController::class, 'updatep
 
 
 //excel
-// Route::get('importExportView', [MyController::class, 'importExportView']);
 Route::get('export', [MyController::class, 'export'])->name('export');
 Route::post('import', [MyController::class, 'import'])->name('import');
 
