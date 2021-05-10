@@ -73,8 +73,10 @@ Route::get('export', [MyController::class, 'export'])->name('export');
 Route::post('import', [MyController::class, 'import'])->name('import');
 
 
-// Route::get('export', [MyController::class, 'export'])->name('export');
 Route::post('importProduct', [MyController::class, 'importProduct'])->name('importProduct');
+Route::post('importCustomer', [MyController::class, 'importCustomer'])->name('importCustomer');
+Route::get('exportCustomer', [MyController::class, 'exportCustomer'])->name('exportCustomer');
+
 
 
 //add_product

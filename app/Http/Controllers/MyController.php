@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Exports\ProductExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\ProductImport;
+use App\Imports\CustomerImport;
 
 class MyController extends Controller
 {
@@ -38,5 +39,23 @@ class MyController extends Controller
             return redirect()->back()->with('success','Product saved successfully...');
         
         }
+        
+        public function importCustomer() 
+        {
+            if(request()->file('file') == Null){
+                return back()->withError('Please Select File')->withInput();
+            }
+
+            foreach($row  as $item){
+                $item->validate([
+                    'mobile' => 'unique',
+                ]); 
+               }
+            Excel::import(new CustomerImport,request()->file('file'));
+          
+            return redirect()->back()->with('success','Customer saved successfully...');
+        
+        }
+        
         
 }

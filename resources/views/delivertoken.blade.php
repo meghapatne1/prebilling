@@ -9,8 +9,23 @@
                   <p>{{ $message }}</p>
               </div>
           @endif
+          
+    @if (session('error'))
+        <div class="alert alert-danger">{{ session('error') }}</div>
+    @endif
+    
+     @if ($errors->any())
+        <div class="alert alert-danger">
+      
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+            </div>
+     @endif
             <div class="card">
-            <div class="card-header">Deliver Token</div> 
+            <div class="card-header">Use Token</div> 
             <div class="card-body"> 
  
             <form action="{{ route('save_token') }}" method="POST">
@@ -19,7 +34,7 @@
               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <div class="input-group">
                           <i class="fa fa-user-o icon"></i>
-                      <input name="no_of_token_utilized"  type="number" class="form-control" value="" placeholder="Token deliver" required>
+                      <input name="no_of_token_utilized"  type="number" class="form-control" value="" placeholder="Use deliver" required>
                       <input name="id"  type="hidden" class="form-control" value="{{$id}}">
                   </div>
                   <div class="input-group" style="width:30%;">

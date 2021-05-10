@@ -261,7 +261,17 @@ class HomeController extends Controller
     }
 
     public function savetoken(Request $request){
+        
+        DB::beginTransaction();
+        try{
         $customer_data = Customer::find($request->id);
+
+        // validation if remaning token is less than use token it will not allow
+        if($request->no_of_token_utilized > $customer_data->remaning_token){
+            return back()->withError('You can not use more than ' . $request->no_of_token_utilized . ' token')->withInput();
+        }
+        // validation if remaning token is less than use token it will not allow 
+
         $customer_data->no_of_token_utilized = $request->no_of_token_utilized+$customer_data->no_of_token_utilized ;
         $customer_data->remaning_token = $customer_data->total_token -  $customer_data->no_of_token_utilized;
         $customer_data->save();
@@ -278,7 +288,18 @@ class HomeController extends Controller
         $user = Auth::user();
         $customer_history->user_id=$user->id;
         $customer_history->save();
+        
+        DB::commit();
         return redirect()->route('view_customer')->with('success','Token updated successfully');
+        } catch (Exception $exception) {
+
+            DB::rollback();
+           
+            return back()->withError( $exception->getMessage())->withInput();
+        }
+
+
+
        }
     
     public function issue_token($id){
