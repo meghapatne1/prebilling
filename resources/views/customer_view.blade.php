@@ -64,16 +64,21 @@ input:focus {
                     <input type="number" placeholder="Customer Mobile" class="boxes" name="mobile1[]" value="" required>
                     <input type="text" placeholder="Customer Colony" class="boxes" name="colony[]" value="" required>
                     <input type="number" placeholder="Customer Pincode"  class="boxes" name="pincode[]" value="" required>
-                    <input type="submit"  name="submit" class="btn-submit" value="Submit">
-
-                   
+                    <input type="submit"  name="submit" class="btn-submit" value="Submit">       
                 <a href="#" class="removeclass"></a></div>
             </div>
             <br>
-  
-           
         </form>
      
+
+        <form action="{{ route('importCustomer') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="file" class="form-control">
+            <br>
+            <button class="btn btn-success">Import Customer Data</button>
+            <a class="btn btn-warning" href="{{ route('exportCustomer') }}">Export Customer Data</a>
+        </form>
+
                 </div>
             </div>
         </div>
