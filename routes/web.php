@@ -31,6 +31,9 @@ Route::get('/customerhome', [App\Http\Controllers\HomeController::class, 'custom
 Route::middleware(['is_pos'])->group(function () {
 
 Route::get('/poshome', [App\Http\Controllers\HomeController::class, 'posHome'])->name('poshome');
+Route::get('/getCustomer/{id}', [App\Http\Controllers\HomeController::class, 'getCustomer'])->name('getCustomer');
+
+
 
 });
 

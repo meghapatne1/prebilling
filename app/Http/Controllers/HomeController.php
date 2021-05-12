@@ -62,6 +62,14 @@ class HomeController extends Controller
     
         return view('PosDashboard',compact('pos_user_info','pos_customers'));
     }
+
+      public function getCustomer($id)
+    {
+        $get_customers = DB::table('customers')->where('id','=',$id)->get();
+        
+        return view('customerToken',compact('get_customers'));
+    }
+
     public function home3()
     {
         return view('home3');

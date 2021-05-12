@@ -21,40 +21,28 @@
             @endforeach
         </ul>
         </div>
-     @endif
-            <table class="table table-bordered">
-            <h3>User Information</h3>
-            <thead>
-            <tr>
-            <th>Name</th>
-            <th>Mobile</th>
-            <th>Address</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($pos_user_info as $item)
-            <tr>
-            <td>{{$item->name}}</td>
-            <td>{{$item->mobile}}</td>
-            <td>{{$item->address}},{{$item->city}},{{$item->pincode}}</td>
-            </tr>
-            @endforeach
-            </tbody>
-            </table>
+        @endif
+            
 
             <table class="table table-bordered">
-            <h3>Assigned Customer Information</h3>
+            <h3> Customer Information </h3>
             <thead>
             <tr>
             <th>Name</th>
             <th>Mobile</th>
+            <th>Remainig Token</th>
+            <th>Total Used Token</th>
+            <th>Expiry Date </th>
             </tr>
             </thead>
             <tbody>
-            @foreach($pos_customers as $data)
+            @foreach($get_customers as $data)
             <tr>
-            <td><a href="/getCustomer/{{$data->id}}">{{$data->customer_name}}</a></td>
-            <td>{{$data->customer_mobile}}</td>
+            <td>{{$data->name}}</td>
+            <td>{{$data->mobile1}}</td>
+            <td>{{$data->remaning_token}}</td>
+            <td>{{$data->no_of_token_utilized}}</td>
+            <td>{{ \Carbon\Carbon::parse( $data->token_expire_date)->format('d-m-Y')}}</td>
             </tr>
             @endforeach
             </tbody>
