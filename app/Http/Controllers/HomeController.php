@@ -10,6 +10,7 @@ use App\Models\Pointofsale;
 use DB;
 use Auth;
 use App\Models\User;
+use App\Models\Productcustomer;
 use Illuminate\Support\Facades\Validator;
 Use Exception;
 use Hash;
@@ -245,18 +246,22 @@ class HomeController extends Controller
 
     }
 
-    public function update_customer_account(Request $request){
+    public function add_customer_account(Request $request){
 
-        $customer = Customer::find($request->id);
+        $customer = New Productcustomer;
+      
         $customer->shift = $request->shift;
         $customer->amount = $request->amount;
+        $customer->payment_type = $request->payment_type;
+        $customer->brand = $request->brand;
         $customer->total_token = $request->total_token;
         $customer->cost_of_per_token = $request->cost_of_per_token;
         $customer->no_of_token_utilized = $request->no_of_token_utilized;
         $customer->remaning_token = $request->remaning_token;
         $customer->product_name = $request->product_name;
         $customer->token_expire_date = $request->token_expire_date;
-        
+        $customer->customer_mobile = $request->customer_mobile;
+        $customer->user_mobile = Auth::user()->mobile;
         $customer->save();
   
        return redirect()->route('view_customer')->with('success','Customer account updated successfully');
