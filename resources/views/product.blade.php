@@ -17,10 +17,54 @@ input {
 input:focus {
 outline: none;
 }
+.import-button-style{
+    background-color: #89d8d3!important;
+background-image: linear-gradient(315deg,  #158a83 0%, #03c8a8 74%)!important;
+  border: none!important;
+  z-index: 1!important;
+  font-family: 'Roboto';
+  }
+.export-button-style{
+  background: rgb(255,151,0)!important;
+  background-image: linear-gradient(yellow,#d0d236)!important;
+  border: none!important;
+  z-index: 1!important;
+  font-family: 'Roboto';
+}
+.card{
+    box-shadow: 6px 6px 10px mediumorchid!important;
+    margin: 1rem !important;
+}
+@media only screen and (max-width:768px){
+    
+
+ .boxes{
+    width: 100%!important;
+    margin: .3rem 0rem;
+}
+    .btn-submit {
+    margin: 0px!important;
+    width: 100%!important;
+}
+
+.form-control{
+    margin-left: 0rem!important;
+}
+.import-button-style {
+
+    margin-bottom: .4rem!important;
+    width: 100%!important;
+}
+.export-button-style{
+    width: 100%!important;
+}
+}
+
+
 
     </style>
 
-<div class="container">
+<div class="main-content">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
@@ -71,8 +115,8 @@ outline: none;
                 @csrf
                 <input type="file" name="file" class="form-control">
                 <br>
-                <button class="btn btn-success">Import Product Data</button>
-                <a class="btn btn-warning" href="{{ route('export') }}">Export Product Data</a>
+                <button class="btn btn-success import-button-style">Import Product Data</button>
+                <a class="btn btn-warning export-button-style" href="{{ route('export') }}">Export Product Data</a>
             </form>
                 </div>
             </div>

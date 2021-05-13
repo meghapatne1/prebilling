@@ -1,6 +1,22 @@
 @extends('layouts.app2')
 @section('content')
-<div class="container-fluid">
+<style>
+    .customerhistory-row-style{
+        background: blueviolet;
+    }
+    .customerhistory-row-style th{
+        color:white!important;
+        font-size: 16px;
+    }
+    @media only screen and (max-width:768px){
+        .card-body{
+            overflow-x: scroll;
+        }
+    }
+ 
+
+</style>
+<div class="main-content">
     <div class="row justify-content-center">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
    
@@ -10,10 +26,10 @@
         </div>
     @endif
     <div class="card">
-    <div class="card-header">Manage Customer</div> 
+    <div class="card-header"> Customer-history</div> 
     <div class="card-body"> 
     <table class="table table-bordered">
-        <tr>
+        <tr class="customerhistory-row-style">
             <th>No</th>
             <th>Name</th>
             <th>Customer Mobile</th>
