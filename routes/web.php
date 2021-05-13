@@ -61,7 +61,7 @@ Route::post('/save_issue_token', [App\Http\Controllers\HomeController::class, 's
 Route::get('/customer_history', [App\Http\Controllers\HomeController::class, 'customerhistory'])->name('customer_history');
 
 
-Route::post('/update_customer_account', [App\Http\Controllers\HomeController::class, 'update_customer_account'])->name('update_customer_account');
+Route::post('/add_customer_account', [App\Http\Controllers\HomeController::class, 'add_customer_account'])->name('add_customer_account');
 
 //delivery boy
 Route::get('/add_pos', [App\Http\Controllers\HomeController::class, 'add_point_of_sale'])->name('add_pos');

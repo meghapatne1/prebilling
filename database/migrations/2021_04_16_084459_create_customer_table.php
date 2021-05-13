@@ -20,22 +20,7 @@ class CreateCustomerTable extends Migration
             $table->string('colony')->nullable();
             $table->string('city')->nullable();
             $table->bigInteger('mobile1')->unique();
-            $table->string('payment_type')->nullable(); //prepaid, postpaid
-            $table->string('shift')->nullable();
-            $table->string('brand')->nullable(); //sanchi,kuber
-            $table->boolean('status')->nullable()->default(1); 
-            $table->bigInteger('amount')->nullable(); //paid or unpaid amount
-            $table->bigInteger('total_token')->nullable(); //kitni unit deliver karni hai total
-            $table->bigInteger('cost_of_per_token')->nullable(); 
-            $table->bigInteger('no_of_token_utilized')->nullable(); 
-            $table->bigInteger('remaning_token')->nullable(); 
-            $table->string('product_name')->nullable();   
-            $table->date('start_date')->nullable(); 
-            $table->date('end_date')->nullable(); 
-            $table->bigInteger('pincode')->nullable(); 
-            $table->bigInteger('user_mobile')->nullable(); 
-            $table->date('token_expire_date')->nullable(); 
-            
+            $table->boolean('status')->nullable()->default(1);         
             $table->timestamps();
         });
     }

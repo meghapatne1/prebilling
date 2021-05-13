@@ -51,7 +51,7 @@
         <div class="section">
     <button type="button" class="btn btn-primary left-button">Update Custumer Account</button>
    </div>
-    <form action="{{ route('update_customer_account') }}" method="POST">
+    <form action="{{ route('add_customer_account') }}" method="POST">
         <br>
     
     @foreach ($customerdata as $item)
@@ -59,31 +59,31 @@
     <div class="form-group">
     <lable class="lable-style">Amount</lable>
     
-        <input name="amount" type="number" class="form-control" value="{{ $item->amount }}">
+        <input name="amount" type="number" class="form-control" value="">
     </div>
-    
+    <input name="customer_mobile" type="hidden" class="form-control" value="{{ $item->mobile1 }}">
     <div class="form-group">
     <lable class="lable-style">Utilized Token</lable>
        
-        <input name="no_of_token_utilized" type="number" class="form-control" value="{{ $item->no_of_token_utilized }}">
+        <input name="no_of_token_utilized" type="number" class="form-control" value="">
     </div>
 
     <div class="form-group">
     <lable class="lable-style">Total tokan</lable>
       
-        <input name="total_token" type="number" class="form-control" value="{{ $item->total_token }}">
+        <input name="total_token" type="number" class="form-control" value="">
     </div>
 
     <div class="form-group">
     <lable class="lable-style">Cost Of Per Token</lable>
     
-        <input name="cost_of_per_token" type="number" class="form-control" value="{{ $item->cost_of_per_token }}">
+        <input name="cost_of_per_token" type="number" class="form-control" value="">
     </div>
 
     <div class="form-group">
     <lable class="lable-style">Remaining Token</lable>
     
-        <input name="remaning_token" type="number" class="form-control" value="{{ $item->remaning_token }}">
+        <input name="remaning_token" type="number" class="form-control" value="">
     </div>
     
     <div class="form-group">
@@ -97,17 +97,42 @@
         @endif
         @endforeach
         </select>
- 
+    </div>
+
+
+    <div class="form-group">
+    <lable class="lable-style"> Select Payment Type</lable>
+        <select name="payment_type" class="form-control">
+        <option value="prepaid"> Pre Paid</option>
+        <option value="postpaid"> Post Paid</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+    <lable class="lable-style"> Select Payment Shift</lable>
+        <select name="shift" class="form-control">
+        <option value="morning"> Morning</option>
+        <option value="evening"> Evening</option>
+        <option value="anytime"> AnyTime</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+    <lable class="lable-style"> Product Brand </lable>
+        <select name="brand" class="form-control">
+        <option value="sanchi"> Sanchi</option>
+        <option value="amul"> Amul </option>
+        </select>
     </div>
 
     <div class="form-group">
     <lable class="lable-style">Token Valid Upto</lable>
-    <input name="token_expire_date" type="date" class="form-control" value="{{ $item->token_expire_date }}">
+    <input name="token_expire_date" type="date" class="form-control" value="">
     </div>
 
     <div class="form-group" style="text-align: center;width:30%;">
     <input name="id" type="hidden" class="form-control" value="{{ $item->id }}">
-    <input name="submit" type="submit" class="form-control btn btn-info text-white" value="Update Account">
+    <input name="submit" type="submit" class="form-control btn btn-info text-white" value="Save Account">
     </div>
     @endforeach
     </form>
