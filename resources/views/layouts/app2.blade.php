@@ -28,7 +28,8 @@
     <!--fontawesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
- 
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Scripts -->
     <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
@@ -46,12 +47,12 @@
    }
    .submenu-box ul li a {
   
-    color: #f96332 !important;
+    color: #b52d8b  !important;
     font-weight: 700;
     margin: .5rem 1rem;
    }
    .submenu-box ul li a:hover{
-   color: #f96332 !important;
+    color: linear-gradient(#c20169 ,#800080ab)!important; 
     font-weight: 700;
     background-color: #f7f7f7;
     margin: .5rem 1rem;
@@ -65,6 +66,11 @@
     vertical-align: 0.255em;
     content: "";
 }
+.navbar{
+     background: linear-gradient(#c20169 ,#800080ab)!important;
+}
+
+
 
 
   </style>
@@ -172,7 +178,7 @@
 
                 <div class="container-fluid p-0 px-lg-0 px-md-0">
                     <!-- Topbar -->
-                    <nav class="navbar navbar-expand navbar-light my-navbar" style="padding: 0.9rem!important;" id="my-navbar-close">
+                    <nav class="navbar navbar-expand navbar-light" style="padding: 0.9rem!important;" id="my-navbar-close">
 
                         <!-- Sidebar Toggle (Topbar) -->
                         <div type="button" id="bar" class="nav-icon1 hamburger animated fadeInLeft is-closed"
@@ -216,7 +222,7 @@
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div  class="  dropdown-menu-right dropdown-menu" aria-labelledby="navbarDropdown" style="margin:0rem -9rem!important;">
+                                <div  class="  dropdown-menu-right dropdown-menu" aria-labelledby="navbarDropdown" style="margin:0rem 0rem!important;">
                                     <a class="dropdown-item"  href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

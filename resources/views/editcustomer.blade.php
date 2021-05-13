@@ -4,54 +4,91 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <style>
-.box-style {
-    height: 40px;
-    border-radius: 4%;
-}
-.section {
-    margin-top: 1rem;
-    text-align: center;
-    margin-bottom: 1rem;
-    width: 100%;
-}
+ 
+
+    .section {
+        margin-top: 1rem;
+        text-align: center;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+
+    .update-button-style {
+        background: rgb(0, 172, 238) !important;
+        background: linear-gradient(0deg, rgba(0, 172, 238, 1) 0%, rgba(2, 126, 251, 1) 100%) !important;
+        width: 100%;
+    }
+
+    .form-control {
+        margin-left: 0px !important;
+    }
+
+    .select-form {
+        border:none!important;
+        display: block;
+        box-shadow: 1px 1px 6px #109e8f !important;
+        padding: 8px 14px !important;
+        font-family: 'Roboto' !important;
+        width: 100%;
+        border-radius: 5px;
+    }
+
+    input:focus {
+        outline: none!important;
+    }
+
+    .add-update {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .row-content {
+        width: 100%;
+        display: block !important;
+    }
 </style>
 
 
 <div class="container-fluid">
     <div class="row justify-content-center">
-    
+
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
-    <div class="card">
-  
-   
-    <div class="card-header">Update Customer</div> 
-    <br>
-    <div class="row text-center">
-                <div class="col-sm-6">
-                <button  type="button" class="box-style" data-toggle="collapse" data-target="#customer_account">Update Customer Account</button>
-                </div>
-                <div class="col-sm-6">
-                <button type="button" class="box-style" data-toggle="collapse" data-target="#customer_profile">Update Customer Profile</button>
-           
-                </div>
-              
-              </div>
+            @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+            @endif
+            <div class="card">
 
-    <br>
 
-    <div class="card-body collapse" id="customer_account"> 
-    <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 outer-div-border">
-        <div class="section">
-    <button type="button" class="btn btn-primary left-button">Update Custumer Account</button>
-   </div>
-    <form action="{{ route('add_customer_account') }}" method="POST">
+                <div class="card-header">Update Customer</div>
+                <br>
+                <div class="row text-center">
+                    <div class="col-sm-6">
+                        <button type="button" class="profile-account-style" data-toggle="collapse" data-target="#customer_account">Update Customer Account</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <button type="button" class="profile-account-style" data-toggle="collapse" data-target="#customer_profile">Update Customer Profile</button>
+
+                    </div>
+
+                </div>
+
+                <br>
+
+
+                <div class="add-update">
+                    <div class="card-body collapse" id="customer_account" style="width: 50%">
+                        <div class="row-content">
+                            <div class="outer-div-border">
+
+                                <div class="update-account">Update Custumer Account</div>
+
+                                <form action="{{ route('add_customer_account') }}" method="POST">
+                                    <br>
+
+                                    <form action="{{ route('add_customer_account') }}" method="POST">
         <br>
     
     @foreach ($customerdata as $item)
@@ -135,59 +172,60 @@
     <input name="submit" type="submit" class="form-control btn btn-info text-white" value="Save Account">
     </div>
     @endforeach
-    </form>
-     </div>
-    </div>
-    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
 
-    <!-- add customer profile -->
-    <div class="card-body collapse" id="customer_profile"> 
-    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 outer-div-border">
-    <div class="section">
-    <button type="button" class="btn btn-primary left-button">Update Custumer Profile</button>
-    </div>
-    <form action="{{ route('update_customer') }}" method="POST">
-     @csrf
+                    <!-- add customer profile -->
+                    <div class="card-body collapse" id="customer_profile" style="width: 50%">
+                        <div class="outer-div-border">
 
-    @foreach ($customerdata as $item)
 
-    <div class="form-group">
-    <lable class="lable-style">Name</lable>
-    
-        <input name="name" type="text" class="form-control" value="{{ $item->name }}">
-    </div>
-   
-    <div class="form-group">
-    <lable class="lable-style">Address</lable>
-    
-        <input name="address" type="text" class="form-control" value="{{ $item->address }}">
-    </div>
+                            <div class="update-customer">Update Custumer Profile</div>
+                            <form action="{{ route('update_customer') }}" method="POST">
+                                @csrf
 
-    <div class="form-group">
-    <lable class="lable-style">Pincode</lable>
-    
-        <input name="pincode" type="number" class="form-control" value="{{ $item->pincode }}">
-    </div>
+                                @foreach ($customerdata as $item)
 
-    <div class="form-group">
-    <lable class="lable-style">Status</lable>
-    
-        <input name="status" type="number" class="form-control" value="{{ $item->status }}">
-    </div>
-    
-    
-    <div class="form-group" style="text-align: center;width:40%;">
-    <input name="id" type="hidden" class="form-control" value="{{ $item->id }}">
-     <input name="submit" type="submit" class="form-control btn btn-info text-white" value="Update Customer Profile">
-    </div>
-    @endforeach
- 
+                                <div class="form-group">
+                                    <lable class="lable-style">Name</lable>
 
-    </form>
-    </div>
+                                    <input name="name" type="text" class="form-control" value="{{ $item->name }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <lable class="lable-style">Address</lable>
+
+                                    <input name="address" type="text" class="form-control" value="{{ $item->address }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <lable class="lable-style">Pincode</lable>
+
+                                    <input name="pincode" type="number" class="form-control" value="{{ $item->pincode }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <lable class="lable-style">Status</lable>
+
+                                    <input name="status" type="number" class="form-control" value="{{ $item->status }}">
+                                </div>
+
+
+                                <div class="form-group" style="text-align: center;width:100%;">
+                                    <input name="id" type="hidden" class="form-control" value="{{ $item->id }}">
+                                    <input name="submit" type="submit" class=" btn btn-info text-white update-button-style" value="Update Customer Profile">
+                                </div>
+                                @endforeach
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-@endsection
+    @endsection

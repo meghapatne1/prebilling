@@ -3,7 +3,7 @@
 
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 update-profile-column">
            <div class="container">
                  
 
@@ -30,31 +30,31 @@
 @endif
 
                     @foreach($user_profile as $item)
-                    <form  class="form-style" action="{{ route('save_user_profile') }}" method="POST">
+                    <form  class="form-profile-style" action="{{ route('save_user_profile') }}" method="POST">
                          @csrf
                         <div class="form-group">
-                        <label class="" for="email">Name:</label>
-                        <input type="text" class="form-control" value="{{$item->name}}" name="name">
+                        <label class="profile-label" for="email">Name:</label>
+                        <input type="text" class="update-profile-style" value="{{$item->name}}" name="name">
                         </div>
                         <div class="form-group">
-                        <label class="" for="email">Email:</label>
-                        <input type="email" class="form-control" value="{{$item->email}}" name="email">
+                        <label class="profile-label" for="email">Email:</label>
+                        <input type="email" class="update-profile-style" value="{{$item->email}}" name="email">
                         </div>
                         <div class="form-group">
-                        <label class="" for="email">Mobile:</label>
-                        <input type="text" class="form-control" value="{{$item->mobile}}" name="mobile">
+                        <label class="profile-label" for="email">Mobile:</label>
+                        <input type="text" class="update-profile-style" value="{{$item->mobile}}" name="mobile">
                         </div>
                         <div class="form-group">
-                        <label class="" for="email">Merchant Type:</label>
-                        <input type="text" class="form-control" value="{{$item->merchant_type}}" name="merchant_type">
+                        <label class="profile-label" for="email">Merchant Type:</label>
+                        <input type="text" class="update-profile-style" value="{{$item->merchant_type}}" name="merchant_type">
                         </div>
                         <div class="form-group">
-                        <label class="" for="pwd">Password:</label>
-                        <input type="password" class="form-control"  value="{{$item->password}}" name="password">
-                        <input type="hidden" class="form-control" value="{{$item->id}}" name="id">
+                        <label class="profile-label" for="pwd">Password:</label>
+                        <input type="password" class="update-profile-style"  value="{{$item->password}}" name="password">
+                        <input type="hidden" class="update-profile-style" value="{{$item->id}}" name="id">
                         </div>
                         <div class="form-group">
-                        <input type="Submit" class="form-control" class="btn btn-primary" name="Submit" value="Submit">
+                        <input type="Submit" class="btn btn-primary profile-update-button" name="Submit" value="Submit">
 </div>
                     </form>
                     @endforeach
