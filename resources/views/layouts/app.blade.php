@@ -70,7 +70,7 @@ $(AddButton).click(function (e) {
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md shadow-sm" style="background-color:#325ca8;">
+        <nav class="navbar navbar-expand-md shadow-sm laravel-header">
             <div class="container">
                    <span class="text-white head_title"> {{ config('app.name', 'Laravel') }}</span>
                
@@ -90,13 +90,13 @@ $(AddButton).click(function (e) {
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link-style" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
                             
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link-style" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else

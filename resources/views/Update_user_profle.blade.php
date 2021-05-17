@@ -1,6 +1,11 @@
 @extends('layouts.app')
 @section('content')
 
+<style>
+    body{
+        background: linear-gradient(115deg, #56d8e4 10%, #9f01ea 90%);
+    }
+</style>
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 update-profile-column">
