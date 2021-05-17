@@ -47,13 +47,20 @@ class HomeController extends Controller
 
 
     public function customerHome()
-    {
-          
+    { 
+          $productcustomers=DB::table('productcustomers')->where('customer_mobile','=',Auth::user()->mobile)->get();
           $customer=DB::table('customers')->where('mobile1','=',Auth::user()->mobile)->first();
-          $customer_history=DB::table('customer_histories')->where('customer_mobile','=',Auth::user()->mobile)->get();
-          return view('CustomerDashboard',compact('customer','customer_history'));
+          return view('CustomerDashboard',compact('customer','productcustomers'));
     }
     
+    public function customer_token($procus_id)
+    { 
+       $procus_id=$procus_id; 
+       $customer_history=DB::table('customer_histories')->where('customer_mobile','=',Auth::user()->mobile)->get();
+       $productcustomers=DB::table('productcustomers')->where('id','=',$procus_id)->first();
+
+      return view('customer_token',compact('productcustomers','customer_history'));
+    }
     
     public function poshome()
     {
@@ -246,10 +253,17 @@ class HomeController extends Controller
 
     }
 
+    public function manage_customer_account($customerid){
+      
+        $product_customer = DB::table('productcustomers')->where('customer_id','=',$customerid)->get();
+       
+        return view('manage_customer_account',compact('product_customer'));
+
+    }
+    
     public function add_customer_account(Request $request){
 
         $customer = New Productcustomer;
-      
         $customer->shift = $request->shift;
         $customer->amount = $request->amount;
         $customer->payment_type = $request->payment_type;
@@ -262,36 +276,40 @@ class HomeController extends Controller
         $customer->token_expire_date = $request->token_expire_date;
         $customer->customer_mobile = $request->customer_mobile;
         $customer->user_mobile = Auth::user()->mobile;
+        $customer->customer_id = $request->customer_id;
         $customer->save();
   
        return redirect()->route('view_customer')->with('success','Customer account updated successfully');
 
     }
     
-    public function deliver_token($id){
+    public function deliver_token($procust_id){
         
-        return view('delivertoken',compact('id'));
+        return view('delivertoken',compact('procust_id'));
     }
 
     public function savetoken(Request $request){
-        
+       
         DB::beginTransaction();
         try{
-        $customer_data = Customer::find($request->id);
+        $customer_data = Productcustomer::find($request->procust_id);
+        $customer = DB::table('customers')->where('mobile1','=', $customer_data->customer_mobile)->first();
 
         // validation if remaning token is less than use token it will not allow
         if($request->no_of_token_utilized > $customer_data->remaning_token){
-            return back()->withError('You can not use more than ' . $request->no_of_token_utilized . ' token')->withInput();
+            return back()->withError('You can not use more than ' . $customer_data->remaning_token . ' token')->withInput();
         }
         // validation if remaning token is less than use token it will not allow 
 
         $customer_data->no_of_token_utilized = $request->no_of_token_utilized+$customer_data->no_of_token_utilized ;
         $customer_data->remaning_token = $customer_data->total_token -  $customer_data->no_of_token_utilized;
+
+
         $customer_data->save();
         $customer_history = New Customer_history;
-        $customer_history->customer_id=$customer_data->id;
-        $customer_history->customer_name=$customer_data->name;
-        $customer_history->customer_mobile=$customer_data->mobile1;
+        $customer_history->customer_id=$customer->id;
+        $customer_history->customer_name=$customer->name;
+        $customer_history->customer_mobile=$customer->mobile1;
         $customer_history->product_name=$customer_data->product_name;
         $customer_history->cost_of_per_token=$customer_data->cost_of_per_token;
         $customer_history->no_of_token_utilized=$request->no_of_token_utilized;
@@ -301,7 +319,7 @@ class HomeController extends Controller
         $user = Auth::user();
         $customer_history->user_id=$user->id;
         $customer_history->save();
-        
+     
         DB::commit();
         return redirect()->route('view_customer')->with('success','Token updated successfully');
         } catch (Exception $exception) {
@@ -315,18 +333,18 @@ class HomeController extends Controller
 
        }
     
-    public function issue_token($id){
-        return view('issuetoken',compact('id'));
+    public function issue_token($procus_id){
+        return view('issuetoken',compact('procus_id'));
     }
     
 
     public function save_issue_token(Request $request){
-        $customer_data = Customer::find($request->id);
+        $customer_data = Productcustomer::find($request->procus_id);
         $customer_data->amount =$customer_data->amount + $request->amount ;
         $customer_data->total_token = $customer_data->total_token + $request->total_token;
+        $customer_data->remaning_token = $customer_data->remaning_token + $request->total_token;
         $customer_data->save();
         return redirect()->route('view_customer')->with('success','Token updated successfully');
-
     }
     public function customerhistory(Request $request){
 
@@ -405,6 +423,55 @@ class HomeController extends Controller
             return back()->withError($exception->getMessage())->withInput();
         }
     }
+
+    public function delete_product_customer($procus_id){
+        DB::beginTransaction();
+        try{
+           
+        $Productcustomer =  Productcustomer::where('id', $procus_id)->delete();
+        DB::commit();
+        return redirect()->route('view_customer')->with('success','Data deleted successfully');
+        
+        } catch (Exception $exception) {
+            DB::rollback();
+            return back()->withError($exception->getMessage())->withInput();
+        }
+    }
+    
+   
+    public function edit_product_customer($procus_id){
+      
+        $Productcustomer =  Productcustomer::where('id', $procus_id)->first();
+        return view('edit_product_customer',compact('Productcustomer')); 
+    }
+    
+    
+    
+
+    public function update_poroduct_customer(Request $request){
+
+        try{  
+            $Productcustomer = Productcustomer::find($request->procust_id);
+            $Productcustomer->amount = $request->amount;
+            $Productcustomer->cost_of_per_token = $request->cost_of_per_token;
+            $Productcustomer->total_token = $request->total_token;
+            $Productcustomer->no_of_token_utilized = $request->no_of_token_utilized;
+            $Productcustomer->remaning_token = $request->remaning_token;
+            $Productcustomer->remaning_token = $request->remaning_token;
+            $Productcustomer->product_name = $request->product_name;
+            $Productcustomer->token_expire_date = $request->token_expire_date;
+            $Productcustomer->save();   
+          
+            return redirect()->route('view_customer')->with('success','data updated successfully');
+            } catch (Exception $exception) {
+               
+                return back()->withError( $exception->getMessage())->withInput();
+            }
+        
+       
+    }
+
+
 
     
 public function editpos($id){
