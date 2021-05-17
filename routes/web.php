@@ -26,6 +26,8 @@ Route::get('/home3', [App\Http\Controllers\HomeController::class, 'home3'])->nam
 
 Route::middleware(['is_customer'])->group(function () {
 Route::get('/customerhome', [App\Http\Controllers\HomeController::class, 'customerHome'])->name('customerhome');
+Route::get('/customertoken/{procus_id}', [App\Http\Controllers\HomeController::class, 'customer_token'])->name('customertoken');
+
 });
 
 Route::middleware(['is_pos'])->group(function () {
@@ -54,11 +56,17 @@ Route::get('/view_customer', [App\Http\Controllers\HomeController::class, 'show'
 Route::get('/deletecustomer/{id}', [App\Http\Controllers\HomeController::class, 'delete'])->name('deletecustomer');
 Route::get('/editcustomer/{id}', [App\Http\Controllers\HomeController::class, 'edit'])->name('editcustomer');
 Route::post('/update_customer', [App\Http\Controllers\HomeController::class, 'update'])->name('update_customer');
-Route::get('/delivertoken/{id}', [App\Http\Controllers\HomeController::class, 'deliver_token'])->name('delivertoken');
+Route::get('/delivertoken/{productcustomerid}', [App\Http\Controllers\HomeController::class, 'deliver_token'])->name('delivertoken');
 Route::post('/save_token', [App\Http\Controllers\HomeController::class, 'savetoken'])->name('save_token');
-Route::get('/issuetoken/{id}', [App\Http\Controllers\HomeController::class, 'issue_token'])->name('issuetoken');
+Route::get('/issuetoken/{productcustomerid}', [App\Http\Controllers\HomeController::class, 'issue_token'])->name('issuetoken');
 Route::post('/save_issue_token', [App\Http\Controllers\HomeController::class, 'save_issue_token'])->name('save_issue_token');
 Route::get('/customer_history', [App\Http\Controllers\HomeController::class, 'customerhistory'])->name('customer_history');
+Route::get('/manage_customer_account/{customerid}', [App\Http\Controllers\HomeController::class, 'manage_customer_account'])->name('manage_customer_account');
+Route::get('/delete_product_customer/{productcustomerid}', [App\Http\Controllers\HomeController::class, 'delete_product_customer'])->name('delete_product_customer');
+Route::get('/edit_product_customer/{productcustomerid}', [App\Http\Controllers\HomeController::class, 'edit_product_customer'])->name('edit_product_customer');
+Route::post('/update_poroduct_customer', [App\Http\Controllers\HomeController::class, 'update_poroduct_customer'])->name('update_poroduct_customer');
+
+
 
 
 Route::post('/add_customer_account', [App\Http\Controllers\HomeController::class, 'add_customer_account'])->name('add_customer_account');

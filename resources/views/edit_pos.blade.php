@@ -7,30 +7,6 @@
         border-radius: 5px;
         margin: 0rem auto;
     }
-    .form-control-icon-name{
-        display: flex;
-        width: 100%;
-
-    }
-
-    .lable-style {
-        font-weight: 600;
-        margin-right: 1rem;
-    }
-
-    .submit-button-style {
-        background: rgb(96, 9, 240) !important;
-        background: linear-gradient(0deg, rgba(96, 9, 240, 1) 0%, rgba(129, 5, 240, 1) 100%) !important;
-        border: none !important;
-        width: 100% !important;
-    }
-
-    .submit-button-style:hover {
-        box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .5),
-            -4px -4px 6px 0 rgba(116, 125, 136, .5),
-            inset -4px -4px 6px 0 rgba(255, 255, 255, .2),
-            inset 4px 4px 6px 0 rgba(0, 0, 0, .4) !important;
-    }
 </style>
 
 

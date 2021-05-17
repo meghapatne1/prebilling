@@ -28,7 +28,7 @@
                   <div class="input-group">
                           <i class="fa fa-user-o icon"></i>
                       <input name="total_token"  type="number" class="form-control-style" value="" placeholder="Add Token"  required>
-                      <input name="id"  type="hidden" class="form-control" value="{{$id}}">
+                      <input name="procus_id"  type="hidden" class="form-control" value="{{$procus_id}}">
                   </div>
                   <div class="input-group">
                           <i class="fa fa-user-o icon"></i>

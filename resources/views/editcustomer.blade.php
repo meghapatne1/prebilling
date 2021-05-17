@@ -86,10 +86,8 @@
                                 <div class="update-account">Update Custumer Account</div>
 
                                 <form action="{{ route('add_customer_account') }}" method="POST">
-                                    <br>
-
-                                    <form action="{{ route('add_customer_account') }}" method="POST">
-        <br>
+                                    
+                            <br>
     
     @foreach ($customerdata as $item)
     @csrf
@@ -168,7 +166,7 @@
     </div>
 
     <div class="form-group" style="text-align: center;width:30%;">
-    <input name="id" type="hidden" class="form-control" value="{{ $item->id }}">
+    <input name="customer_id" type="hidden" class="form-control" value="{{ $item->id }}">
     <input name="submit" type="submit" class="form-control btn btn-info text-white" value="Save Account">
     </div>
     @endforeach
@@ -207,9 +205,19 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <lable class="lable-style">Status</lable>
+                                    <lable class="lable-style">Status</lable><br>
+                                    @if($item->status == 1)
+                                        <input type="radio" name="status" value="1" checked>
+                                        <label for="male">Active</label>
+                                        <input type="radio" name="status" value="2">
+                                        <label for="female">Inactive</label>
+                                        @else
+                                        <input type="radio" name="status" value="1">
+                                        <label for="male">Active</label>
+                                        <input type="radio" name="status" value="2" checked>
+                                        <label for="female">Inactive</label>
 
-                                    <input name="status" type="number" class="form-control" value="{{ $item->status }}">
+                                    @endif
                                 </div>
 
 
@@ -228,4 +236,4 @@
         </div>
     </div>
 
-    @endsection
+    @endsection 

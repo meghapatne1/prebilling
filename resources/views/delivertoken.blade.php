@@ -43,7 +43,7 @@
                   <div class="input-group">
                           <i class="fa fa-user-o icon"></i>
                       <input name="no_of_token_utilized"  type="number" class="form-control-style" value="" placeholder="Use deliver" required>
-                      <input name="id"  type="hidden" class="form-control" value="{{$id}}">
+                      <input name="procust_id"  type="hidden" class="form-control" value="{{$procust_id}}">
                   </div>
                   <div class="input-group" style="width:100%;">
                       <input type="submit" name="submit" class=" btn btn-info submit-button-style" value="Submit">
