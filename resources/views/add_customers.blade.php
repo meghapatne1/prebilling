@@ -26,6 +26,38 @@
     input:focus {
         outline: none;
     }
+
+    .button-skip-customer-style {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .skip-next-style {
+
+        background: linear-gradient(0deg, rgba(255, 151, 0, 1) 0%, rgba(251, 75, 2, 1) 100%) !important;
+        border: none;
+        color: white;
+        margin-right: 5rem;
+
+    }
+
+    .skip-next-style:hover {
+        color: white !important;
+        background: rgb(255, 151, 0) !important;
+    }
+
+    .boxes {
+        width: 10rem !important;
+    }
+
+    .submit-btn2 {
+        background: rgb(6, 14, 131);
+        background: linear-gradient(0deg, rgba(6, 14, 131, 1) 0%, rgba(12, 25, 180, 1) 100%);
+        border: none;
+        color:white;
+       font-family: 'Roboto';
+       margin-left: 28rem;
+    }
 </style>
 
 
@@ -37,7 +69,7 @@
 
                     <span class="Add-Product"> {{ __('Add Customer') }}</span>
 
-                    <a href="#" style="float:right;" id="AddMoreFileBox" class="btn btn-success add-more">+Add More</a><br><br>
+
 
                 </div>
 
@@ -74,15 +106,16 @@
                                 <input type="text" placeholder="Customer Mobile" class="boxes" name="mobile1[]" value="" required>
                                 <input type="text" placeholder="Customer Colony" class="boxes" name="colony[]" value="" required>
                                 <input type="text" placeholder="Customer Pincode" class="boxes" name="pincode[]" value="" required>
-                                <input type="submit" name="submit" class="btn-submit" value="Submit">
+                                <a href="#" id="AddMoreFileBox" class="btn btn-success add-more ">+Add More</a>
 
 
                                 <a href="#" class="removeclass"></a>
                             </div>
                         </div>
                         <br>
-
-                        <a href="/dashboard" style="color:white;" class="btn btn-success">Skip/Next</a>
+                       <input type="submit" name="submit" class="btn btn-lg submit-btn2" value="Submit">
+                        
+                        <a href="/dashboard" style="color:white;float:right;" class="btn btn-lg btn-success skip-next-style">Skip/Next</a>
                         <div id="lineBreak"></div>
 
                     </form>
