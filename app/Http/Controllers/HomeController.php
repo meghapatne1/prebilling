@@ -52,6 +52,11 @@ class HomeController extends Controller
           $customer=DB::table('customers')->where('mobile1','=',Auth::user()->mobile)->first();
           return view('CustomerDashboard',compact('customer','productcustomers'));
     }
+
+    public function customer_account_detail(Request $request){
+        $productcustomers=DB::table('productcustomers')->where('customer_mobile','=',Auth::user()->mobile)->get();
+        return view('customer_account_detail',compact('productcustomers'));
+    }
     
     public function customer_token($procus_id)
     { 
@@ -252,6 +257,9 @@ class HomeController extends Controller
        return redirect()->route('view_customer')->with('success','Customer updated successfully');
 
     }
+
+  
+    
 
     public function manage_customer_account($customerid){
       
