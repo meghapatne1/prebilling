@@ -1,5 +1,6 @@
 @extends('layouts.app2')
 @section('content')
+<div class="responsive">
 <table class="table table-bordered">
         <tr class="table-row">
             <th>No</th>
@@ -32,4 +33,5 @@
         </tr>
         @endforeach
     </table> 
+    </div>
 @endsection 
