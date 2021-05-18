@@ -9092,7 +9092,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 #sidebar-wrapper {
   min-height: 100vh;
-  margin-left: -15rem;
+  margin-left: 0rem;
   -webkit-transition: margin .25s ease-out;
   -moz-transition: margin .25s ease-out;
   -o-transition: margin .25s ease-out;
@@ -9142,7 +9142,6 @@ a.text-dark:hover, a.text-dark:focus {
   color: #ffffff;
   font-size: 26px;
   margin-top: 5px;
- 
 }
 
 .head_title:hover {
@@ -9164,8 +9163,8 @@ a.text-dark:hover, a.text-dark:focus {
 
 .icon {
   padding: 10px;
-  background: rgb(96,9,240)!important;
-  background: linear-gradient(0deg, rgba(96,9,240,1) 0%, rgba(129,5,240,1) 100%)!important;
+  background: rgb(96, 9, 240)!important;
+  background: linear-gradient(0deg, rgba(96, 9, 240, 1) 0%, rgba(129, 5, 240, 1) 100%)!important;
   color: white;
   min-width: 50px;
   text-align: center;
@@ -9271,7 +9270,6 @@ a.text-dark:hover, a.text-dark:focus {
   padding: 1rem 3rem;
 }
 
-
 /* dashborad  css kanchan */
 
 .box-style {
@@ -9326,31 +9324,31 @@ a.text-dark:hover, a.text-dark:focus {
   line-height: 42px;
   padding: .4rem!important;
   border: none!important;
-  background: rgb(255,27,0);
-  background: linear-gradient(0deg, rgba(255,27,0,1) 0%, rgba(251,75,2,1) 100%);
+  background: rgb(255, 27, 0);
+  background: linear-gradient(0deg, rgba(255, 27, 0, 1) 0%, rgba(251, 75, 2, 1) 100%);
 }
 
 .delete-button-style:hover {
-   color: #f0094a;
-   background: rgb(255,27,0)!important;
-   background: linear-gradient(0deg, rgba(255,151,0,1) 0%, rgba(251,75,2,1) 100%)!important;
+  color: #f0094a;
+  background: rgb(255, 27, 0)!important;
+  background: linear-gradient(0deg, rgba(255, 151, 0, 1) 0%, rgba(251, 75, 2, 1) 100%)!important;
 }
-.edit-button-style{
+
+.edit-button-style {
   width: 30%;
   height: 40px;
   line-height: 42px;
   padding: .4rem!important;
-  background: rgb(22,9,240);
-  background: linear-gradient(0deg, rgba(22,9,240,1) 0%, rgba(49,110,244,1) 100%);
+  background: rgb(22, 9, 240);
+  background: linear-gradient(0deg, rgba(22, 9, 240, 1) 0%, rgba(49, 110, 244, 1) 100%);
   color: #fff;
   border: none;
 }
-.edit-button-style:hover{
-  background: rgb(0,3,255)!important;
-  background: linear-gradient(0deg, rgba(2,126,251,1) 0%,  rgba(0,3,255,1)100%)!important;
- 
-}
 
+.edit-button-style:hover {
+  background: rgb(0, 3, 255)!important;
+  background: linear-gradient(0deg, rgba(2, 126, 251, 1) 0%, rgba(0, 3, 255, 1)100%)!important;
+}
 
 button:focus {
   outline: none;
@@ -9383,7 +9381,6 @@ input:focus {
   border-bottom: 1px solid #b82585;
   box-shadow: 3px 0px 3px #ffffff;
 }
-
 
 .fa-times {
   position: relative;
@@ -9418,7 +9415,6 @@ input:focus {
   background-color: white;
   color: #6a008a;
   border-radius: 5px;
-  
 }
 
 .a-href:hover {
@@ -9459,10 +9455,9 @@ input:focus {
   position: relative;
 }
 
-
 /* design by kanchan */
+
 .boxes {
- 
   width: 27%!important;
   margin: .2rem;
   font-family: "roboto";
@@ -9471,27 +9466,26 @@ input:focus {
   box-shadow: 0px 0px 6px #94007a;
 }
 
-
-
 .btn-submit {
-  background: rgb(6,14,131);
-  background: linear-gradient(0deg, rgba(6,14,131,1) 0%, rgba(12,25,180,1) 100%);
+  background: rgb(6, 14, 131);
+  background: linear-gradient(0deg, rgba(6, 14, 131, 1) 0%, rgba(12, 25, 180, 1) 100%);
   border: none;
   padding: 5px!important;
   width: 10%!important;
   font-family: 'Roboto';
 }
+
 .btn-submit:hover {
-  background: rgb(0,3,255);
-background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
+  background: rgb(0, 3, 255);
+  background: linear-gradient(0deg, rgba(0, 3, 255, 1) 0%, rgba(2, 126, 251, 1) 100%);
 }
+
 input.form-control {
-
-    box-shadow: 1px 1px 6px #109e8f!important;
-    padding: 3px 14px!important;
-    font-family: 'Roboto'!important;
+  box-shadow: 0px 0px 6px #94007a;
+  padding: 3px 14px!important;
+  font-family: 'Roboto'!important;
+  margin-top: .4rem;
 }
-
 
 .card-header {
   background-color: mediumorchid!important;
@@ -9501,13 +9495,16 @@ input.form-control {
   font-family: 'FontAwesome';
   font-size: 19px;
 }
+
 .card {
   box-shadow: 6px 6px 10px mediumorchid!important;
   margin: 1rem !important;
 }
+
 .mt-lg-4 {
   margin-top: 1rem!important;
 }
+
 .submit-button-style {
   background: rgb(96, 9, 240) !important;
   background: linear-gradient(0deg, rgba(96, 9, 240, 1) 0%, rgba(129, 5, 240, 1) 100%) !important;
@@ -9516,14 +9513,10 @@ input.form-control {
 }
 
 .submit-button-style:hover {
-  box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .5),
-      -4px -4px 6px 0 rgba(116, 125, 136, .5),
-      inset -4px -4px 6px 0 rgba(255, 255, 255, .2),
-      inset 4px 4px 6px 0 rgba(0, 0, 0, .4) !important;
+  box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .5), -4px -4px 6px 0 rgba(116, 125, 136, .5), inset -4px -4px 6px 0 rgba(255, 255, 255, .2), inset 4px 4px 6px 0 rgba(0, 0, 0, .4) !important;
 }
 
 .form-control-style {
-
   box-shadow: 2px 2px 11px #7007f0;
   padding: 7px 14px!important;
   font-family: 'Roboto'!important;
@@ -9533,366 +9526,312 @@ input.form-control {
   border-radius: 3px
 }
 
-
-
 .update-account {
-  margin: 1rem 1rem;
-  text-align: center;
+  margin: 1rem 0rem;
+  text-align: left;
   font-size: 20px;
-  color: black;
+  color: #15b6d4;
   font-weight: 600;
   font-family: math;
-  text-decoration: underline;
 }
+
 .update-customer {
-  margin: 1rem 1rem;
-  text-align: center;
-  font-size: 20px;
-  color: black;
-  font-weight: 600;
-  font-family: math;
-  text-decoration: underline;
-}
-.outer-div-border {
-   border-radius:5px; 
-   box-shadow: 2px 2px 10px #0199f3;
-   padding: 1rem;
-}
-
-
-
-.profile-account-style{
-  background-image: linear-gradient(#0be1cd, #2b52e2);
-  height: 50px;
-  border-radius: 6px;
-  color: white;
-  width: 50%;
-  border: 1px solid white;
-  height: 40px;
-  border-radius: 4%;
-}
-
-/* design by kanchan profile update form */
-
-.update-profile-style {
-  box-shadow: 2px 2px 11px #7007f0;
-  padding: 7px 14px!important;
-  font-family: 'Roboto'!important;
-  width: 100%;
-  border: none;
-  border-radius: 3px;
-  display: block;
-}
-
-.form-profile-style {
-  border-radius: 4px;
-  box-shadow: 3px 3px 10px #11c5d1;
-  padding: 1rem 3rem;
-  width: 70%;
-  margin: 0px auto;
-  background-image: linear-gradient(#0be1cd, #2b52e2)
-}
-
-.update-profile-column{
-  width:50%!important;
-}
-
-.profile-label{
-  display: inline-block;
-  margin-bottom: 0.5rem;
-  font-size: 18px;
-  font-family: math;
-  font-weight: 600;
-}
-.profile-update-button {
-  color: white;
-  font-size: 18px;
-  font-family: rgb(96, 9, 240) !important;
-  background: linear-gradient(0deg, rgb(37 105 222) 0%, rgb(5 240 153) 100%) !important;
-  border: none !important;
-  width: 100% !important;
-  font-family: auto;
-}
-
-
-/* edit product customer */
-.form-control-icon-name{
-  display: flex;
-  width: 100%;
-
-}
-
-.lable-style {
-  font-weight: 600;
-  margin-right: 1rem;
-}
-
-.submit-button-style {
-  background: rgb(96, 9, 240) !important;
-  background: linear-gradient(0deg, rgba(96, 9, 240, 1) 0%, rgba(129, 5, 240, 1) 100%) !important;
-  border: none !important;
-  width: 100% !important;
-}
-
-.submit-button-style:hover {
-  box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .5),
-      -4px -4px 6px 0 rgba(116, 125, 136, .5),
-      inset -4px -4px 6px 0 rgba(255, 255, 255, .2),
-      inset 4px 4px 6px 0 rgba(0, 0, 0, .4) !important;
-}
-
-
-    /* laravel page design by kanchan */
-
-    .laravel-header{
-      background-color: #850ef1;
-      box-shadow: 0px 2px 8px white!important;
-    }
-    .nav-link-style{
-      color: white;
-      padding: .6rem 1rem;
-      font-size: 20px;
-      font-family: math;
-
-    }
-
-/* pos-link-cutomers designed by kanchan */
-.checkbox-style-label {
-  border: 0px solid #ccc;
-  padding: 10px;
-  font-family: system-ui;
-  color: blueviolet;
-
-}
-
-.checkbox-style-label:hover {
-  background: #eee;
-  cursor: pointer;
-}
-
-.delete-button-style {
-  color: white;
-  font-family: 'FontAwesome';
-  border-radius: 5px;
-  padding: .6rem 1rem!important;
-}
-.delete-button-style:hover {
-  color: white;
-  text-decoration: none;
-}
-
-.table-row-data {
-  text-align: center;
-}
-
-.choose-cutomer-style {
-  font-weight: 500;
-  font-family: system-ui;
-}
-
-#myInput-style {
-  box-shadow: 1px 1px 4px darkslategrey;
-  font-family: 'Roboto';
-}
-
-.btn-submit:hover {
-  color: white;
-
-}
-
-.select-all-button {
-  background: rgb(0, 172, 238);
-  background: linear-gradient(0deg, rgba(0, 172, 238, 1) 0%, rgba(2, 126, 251, 1) 100%);
-  width: 130px;
-  height: 30px;
-  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
-    7px 7px 20px 0px rgba(0, 0, 0, .1),
-    4px 4px 5px 0px rgba(0, 0, 0, .1);
-  border-radius: 5px;
-  margin: 0;
-  text-align: center;
-  color:white;
-  font-family: 'FontAwesome';
-}
-.select-all-button:hover{
-  color:white;
-}
-@media only screen and (max-width:768px){
-  #myInput-style{
+    margin: 1rem 0rem;
+    font-size: 20px;
+    color: #15b6d4;
+    font-weight: 600;
+    font-family: math;
+    text-align: left;
+  }
+  .outer-div-border {
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px #0199f3;
+    padding: 1rem;
+  }
+  .profile-account-style {
+    background-image: linear-gradient(#0be1cd, #2b52e2);
+    height: 50px;
+    border-radius: 6px;
+    color: white;
+    width: 50%;
+    border: 1px solid white;
+    height: 40px;
+    border-radius: 4%;
+  }
+  /* design by kanchan profile update form */
+  .update-profile-style {
+    box-shadow: 2px 2px 11px #7007f0;
+    padding: 7px 14px!important;
+    font-family: 'Roboto'!important;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    display: block;
+  }
+  .form-profile-style {
+    border-radius: 4px;
+    box-shadow: 3px 3px 10px #11c5d1;
+    padding: 1rem 3rem;
+    width: 70%;
+    margin: 0px auto;
+    background-image: linear-gradient(#0be1cd, #2b52e2)
+  }
+  .update-profile-column {
+    width: 50%!important;
+  }
+  .profile-label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    font-size: 18px;
+    font-family: math;
+    font-weight: 600;
+  }
+  .profile-update-button {
+    color: white;
+    font-size: 18px;
+    font-family: rgb(96, 9, 240) !important;
+    background: linear-gradient(0deg, rgb(37 105 222) 0%, rgb(5 240 153) 100%) !important;
+    border: none !important;
+    width: 100% !important;
+    font-family: auto;
+  }
+  /* edit product customer */
+  .form-control-icon-name {
+    display: flex;
     width: 100%;
   }
-}
-
-/* design by kanchan profile update form */
-
-.update-profile-style {
-  box-shadow: 2px 2px 11px #7007f0;
-  padding: 7px 14px!important;
-  font-family: 'Roboto'!important;
-  width: 100%;
-  border: none;
-  border-radius: 3px;
-  display: block;
-}
-
-.form-profile-style {
-  border-radius: 4px;
-  box-shadow: 3px 3px 10px #11c5d1;
-  padding: 1rem 3rem;
-  width: 70%;
-  margin: 0px auto;
-  background-image: linear-gradient(#0be1cd, #2b52e2)
-}
-
-.update-profile-column{
-  width:50%!important;
-}
-
-.profile-label{
-  display: inline-block;
-  margin-bottom: 0.5rem;
-  font-size: 18px;
-  font-family: math;
-  font-weight: 600;
-}
-.profile-update-button {
-  color: white;
-  font-size: 18px;
-  font-family: rgb(96, 9, 240) !important;
-  background: linear-gradient(0deg, rgb(37 105 222) 0%, rgb(5 240 153) 100%) !important;
-  border: none !important;
-  width: 100% !important;
-  font-family: auto;
-}
-
-
-@media only screen and (max-width:768px){
+  .lable-style {
+    margin-right: 1rem;
+    font-family: monospace;
+  }
+  .submit-button-style {
+    background: rgb(96, 9, 240) !important;
+    background: linear-gradient(0deg, rgba(96, 9, 240, 1) 0%, rgba(129, 5, 240, 1) 100%) !important;
+    border: none !important;
+    width: 100% !important;
+  }
+  .submit-button-style:hover {
+    box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .5), -4px -4px 6px 0 rgba(116, 125, 136, .5), inset -4px -4px 6px 0 rgba(255, 255, 255, .2), inset 4px 4px 6px 0 rgba(0, 0, 0, .4) !important;
+  }
+  /* laravel page design by kanchan */
+  .laravel-header {
+    background-color: #850ef1;
+    box-shadow: 0px 2px 8px white!important;
+  }
+  .nav-link-style {
+    color: white;
+    padding: .6rem 1rem;
+    font-size: 20px;
+    font-family: math;
+  }
+  /* pos-link-cutomers designed by kanchan */
+  .checkbox-style-label {
+    border: 0px solid #ccc;
+    padding: 10px;
+    font-family: system-ui;
+    color: blueviolet;
+  }
+  .checkbox-style-label:hover {
+    background: #eee;
+    cursor: pointer;
+  }
+  .delete-button-style {
+    color: white;
+    font-family: 'FontAwesome';
+    border-radius: 5px;
+    padding: .6rem 1rem!important;
+  }
+  .delete-button-style:hover {
+    color: white;
+    text-decoration: none;
+  }
+  .table-row-data {
+    text-align: center;
+  }
+  .choose-cutomer-style {
+    font-weight: 500;
+    font-family: system-ui;
+  }
+  #myInput-style {
+    box-shadow: 1px 1px 4px darkslategrey;
+    font-family: 'Roboto';
+  }
+  .btn-submit:hover {
+    color: white;
+  }
+  .select-all-button {
+    background: rgb(0, 172, 238);
+    background: linear-gradient(0deg, rgba(0, 172, 238, 1) 0%, rgba(2, 126, 251, 1) 100%);
+    width: 130px;
+    height: 30px;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5), 7px 7px 20px 0px rgba(0, 0, 0, .1), 4px 4px 5px 0px rgba(0, 0, 0, .1);
+    border-radius: 5px;
+    margin: 0;
+    text-align: center;
+    color: white;
+    font-family: 'FontAwesome';
+  }
+  .select-all-button:hover {
+    color: white;
+  }
+  @media only screen and (max-width:768px) {
+    #myInput-style {
+      width: 100%;
+    }
+  }
+  /* design by kanchan profile update form */
+  .update-profile-style {
+    box-shadow: 2px 2px 11px #7007f0;
+    padding: 7px 14px!important;
+    font-family: 'Roboto'!important;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    display: block;
+  }
+  .form-profile-style {
+    border-radius: 4px;
+    box-shadow: 3px 3px 10px #11c5d1;
+    padding: 1rem 3rem;
+    width: 70%;
+    margin: 0px auto;
+    background-image: linear-gradient(#0be1cd, #2b52e2)
+  }
   .update-profile-column {
-    width: 100%!important;
-}
-.form-profile-style {
-  width:100%!important;
-}
-}
-
-
-/* design by kanchan login-registration form */
-.login-form-button {
-  color: #fff;
-  background-color: #9326ea!important;
-  border-color: #ba55d3!important;
-}
-.login-form-control {
-  box-shadow: 1px 1px 4px #9c0bea;
-  padding: 5px 14px!important;
-  font-family: 'Roboto'!important;
-  border: none;
-  width: 100%;
-}
-
-/* design by kanchan editcustomer */
-
-
-
-.update-button-style {
-  background: rgb(0, 172, 238) !important;
-  background: linear-gradient(0deg, rgba(0, 172, 238, 1) 0%, rgba(2, 126, 251, 1) 100%) !important;
-  width: 100%;
-}
-
-.form-control {
-  margin-left: 0px !important;
-}
-
-.select-form {
-  border:none!important;
-  display: block;
-  box-shadow: 1px 1px 6px #109e8f !important;
-  padding: 8px 14px !important;
-  font-family: 'Roboto' !important;
-  width: 100%;
-  border-radius: 5px;
-}
-
-input:focus {
-  outline: none!important;
-}
-
-.add-update {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.row-content {
-  width: 100%;
-  display: block !important;
-}
-@media only screen and (max-width:768px) {
-  .box-style {
-      width: 100%;
+    width: 50%!important;
   }
-
-  .responsive {
+  .profile-label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    font-size: 18px;
+    font-family: math;
+    font-weight: 600;
+  }
+  .profile-update-button {
+    color: white;
+    font-size: 18px;
+    font-family: rgb(96, 9, 240) !important;
+    background: linear-gradient(0deg, rgb(37 105 222) 0%, rgb(5 240 153) 100%) !important;
+    border: none !important;
+    width: 100% !important;
+    font-family: auto;
+  }
+  @media only screen and (max-width:768px) {
+    .update-profile-column {
+      width: 100%!important;
+    }
+    .form-profile-style {
+      width: 100%!important;
+    }
+  }
+  /* design by kanchan login-registration form */
+  .login-form-button {
+    color: #fff;
+    background-color: #9326ea!important;
+    border-color: #ba55d3!important;
+  }
+  .login-form-control {
+    box-shadow: 1px 1px 4px #9c0bea;
+    padding: 5px 14px!important;
+    font-family: 'Roboto'!important;
+    border: none;
+    width: 100%;
+  }
+  /* design by kanchan editcustomer */
+  .update-button-style {
+    background: rgb(0, 172, 238) !important;
+    background: linear-gradient(0deg, rgba(0, 172, 238, 1) 0%, rgba(2, 126, 251, 1) 100%) !important;
+    width: 100%;
+  }
+  .form-control {
+    margin-left: 0px !important;
+  }
+  .select-form {
+    border: none!important;
+    display: block;
+    box-shadow: 1px 1px 6px #109e8f !important;
+    padding: 8px 14px !important;
+    font-family: 'Roboto' !important;
+    width: 100%;
+    border-radius: 5px;
+  }
+  input:focus {
+    outline: none!important;
+  }
+  .add-update {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .row-content {
+    width: 100%;
+    display: block !important;
+  }
+  @media only screen and (max-width:768px) {
+    .box-style {
+      width: 100%;
+    }
+    .responsive {
       overflow-x: scroll;
-  }
-  .delete-button-style{
-      width: 100%;  
-  }
-  .edit-button-style{
+    }
+    .delete-button-style {
       width: 100%;
-      margin-top: .4rem;  
+    }
+    .edit-button-style {
+      width: 100%;
+      margin-top: .4rem;
+    }
   }
-}
-
-/* design by kanchan login-registration form */
-.login-form-button {
-  color: #fff;
-  background-color: #9326ea!important;
-  border-color: #ba55d3!important;
-}
-.login-form-control {
-  box-shadow: 1px 1px 4px #9c0bea;
-  padding: 5px 14px!important;
-  font-family: 'Roboto'!important;
-  border: none;
-  width: 100%;
-}
-
-/* design by kanchan add-customer customer-view-blade,php */
-* { font-family:Arial; }
-a {
-color:#999; text-decoration: none;
-}
-a:hover { color:#802727; }
-input { 
- padding:5px;
- border:1px solid #999;
- border-radius:4px;
+  /* design by kanchan login-registration form */
+  .login-form-button {
+    color: #fff;
+    background-color: #9326ea!important;
+    border-color: #ba55d3!important;
   }
-
-
-input:focus {
+  .login-form-control {
+    box-shadow: 1px 1px 4px #9c0bea;
+    padding: 5px 14px!important;
+    font-family: 'Roboto'!important;
+    border: none;
+    width: 100%;
+  }
+  /* design by kanchan add-customer customer-view-blade,php */
+  * {
+    font-family: Arial;
+  }
+  a {
+    color: #999;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #802727;
+  }
+  input {
+    padding: 5px;
+    border: 1px solid #999;
+    border-radius: 4px;
+  }
+  input:focus {
     outline: none;
-}
-.import-button-style{
-    background-color: #89d8d3!important;
-    background-image: linear-gradient(315deg,  #158a83 0%, #03c8a8 74%)!important;
-     border: none!important;
-     z-index: 1!important;
-     font-family: 'Roboto';
   }
-.export-button-style{
-  background: rgb(255,151,0)!important;
-  background-image: linear-gradient(yellow,#d0d236)!important;
-  border: none!important;
-  z-index: 1!important;
-  font-family: 'Roboto';
-}
-.card{
+  .import-button-style {
+    background-color: #89d8d3!important;
+    background-image: linear-gradient(315deg, #158a83 0%, #03c8a8 74%)!important;
+    border: none!important;
+    z-index: 1!important;
+    font-family: 'Roboto';
+  }
+  .export-button-style {
+    background: rgb(255, 151, 0)!important;
+    background-image: linear-gradient(yellow, #d0d236)!important;
+    border: none!important;
+    z-index: 1!important;
+    font-family: 'Roboto';
+  }
+  .card {
     box-shadow: 6px 6px 10px mediumorchid!important;
     margin: 1rem!important;
-}
-.customer-view-form{
+  }
+  .customer-view-form {
     width: 16%!important;
     margin: .2rem;
     font-family: "roboto";
@@ -9900,26 +9839,204 @@ input:focus {
     color: darkslateblue;
     box-shadow: 0px 0px 6px #94007a;
     font-size: 16px!important;
-}
-@media only screen and (max-width:768px){
+  }
+  @media only screen and (max-width:768px) {
     .customer-view-form {
-    width: 100%!important;
-    margin: .2rem 0rem!important;
+      width: 100%!important;
+      margin: .2rem 0rem!important;
     }
     .btn-submit {
-    margin: 0px!important;
-    width: 100%!important;
-}
-
-.form-control{
-    margin-left: 0rem!important;
-}
-.import-button-style {
-
-    margin-bottom: .4rem!important;
-    width: 100%!important;
-}
-.export-button-style{
-    width: 100%!important;
-}
-}
+      margin: 0px!important;
+      width: 100%!important;
+    }
+    .form-control {
+      margin-left: 0rem!important;
+    }
+    .import-button-style {
+      margin-bottom: .4rem!important;
+      width: 100%!important;
+    }
+    .export-button-style {
+      width: 100%!important;
+    }
+  }
+  /* customer-view-blade.php design by kanchan */
+  * {
+    font-family: Arial;
+  }
+  a {
+    color: #999;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #802727;
+  }
+  input {
+    padding: 5px;
+    border: 1px solid #999;
+    border-radius: 4px;
+  }
+  /* new css */
+  input:focus {
+    outline: none;
+  }
+  .import-button-style {
+    background-color: #89d8d3 !important;
+    background-image: linear-gradient(315deg, #158a83 0%, #03c8a8 74%) !important;
+    border: none !important;
+    z-index: 1 !important;
+    font-family: 'Roboto';
+    width: 49%;
+  }
+  .export-button-style {
+    background: rgb(255, 151, 0) !important;
+    background-image: linear-gradient(yellow, #d0d236) !important;
+    border: none !important;
+    z-index: 1 !important;
+    font-family: 'Roboto';
+    width: 49%;
+  }
+  .card {
+    box-shadow: 6px 6px 10px mediumorchid !important;
+    margin: 1rem !important;
+  }
+  .customer-view-form {
+    width: 100% !important;
+    margin: .6rem 0rem;
+    font-family: "roboto";
+    border: 1px solid #00000052;
+    color: darkslateblue;
+    box-shadow: 0px 0px 6px #94007a;
+    font-size: 16px !important;
+  }
+  .customer-view-card-body {
+    width: 50%;
+    margin: 1rem auto;
+    box-shadow: 0px 0px 11px #c610ef;
+  }
+  .add-customer-new-style {
+    display: grid;
+  }
+  .btn-submit2 {
+    background: rgb(6, 14, 131);
+    background: linear-gradient(0deg, rgba(6, 14, 131, 1) 0%, rgba(12, 25, 180, 1) 100%);
+    border: none;
+    padding: 5px 10px !important;
+    font-family: 'Roboto';
+    color: white;
+    font-size: 15px;
+  }
+  @media only screen and (max-width:768px) {
+    .customer-view-form {
+      width: 100% !important;
+      margin: .6rem 0rem !important;
+    }
+    .btn-submit2 {
+      margin-bottom: 1rem!important;
+      width: 100% !important;
+    }
+    .form-control {
+      margin-left: 0rem !important;
+    }
+    .import-button-style {
+      margin-bottom: .4rem !important;
+      width: 100% !important;
+      font-size: 13px;
+    }
+    .export-button-style {
+      width: 100% !important;
+      font-size: 13px;
+    }
+    .customer-view-card-body {
+      width: 95%;
+    }
+    .floar-right {
+      float: none;
+    }
+  }
+  /* product-blade.php designed by kanchan */
+  * {
+    font-family: Arial;
+  }
+  a {
+    color: #999;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #802727;
+  }
+  input {
+    padding: 5px;
+    border: 1px solid #999;
+    border-radius: 4px;
+  }
+  /* new css */
+  input:focus {
+    outline: none;
+  }
+  .import-button-style {
+    background-color: #89d8d3 !important;
+    background-image: linear-gradient(315deg, #158a83 0%, #03c8a8 74%) !important;
+    border: none !important;
+    z-index: 1 !important;
+    font-family: 'Roboto';
+    width: 49%;
+  }
+  .export-button-style {
+    background: rgb(255, 151, 0) !important;
+    background-image: linear-gradient(yellow, #d0d236) !important;
+    border: none !important;
+    z-index: 1 !important;
+    font-family: 'Roboto';
+    width: 49%;
+  }
+  .card {
+    box-shadow: 6px 6px 10px mediumorchid !important;
+    margin: 1rem !important;
+  }
+  .customer-view-card-body {
+    width: 50%;
+    margin: 1rem auto;
+    box-shadow: 0px 0px 11px #c610ef;
+  }
+  .add-customer-new-style {
+    display: grid;
+  }
+  .boxes {
+    width: 100% !important;
+    margin: .6rem 0rem;
+  }
+  .btn-submit3 {
+    background: rgb(6, 14, 131);
+    background: linear-gradient(0deg, rgba(6, 14, 131, 1) 0%, rgba(12, 25, 180, 1) 100%);
+    border: none;
+    padding: 6px 10px !important;
+    font-family: 'Roboto';
+    color: white;
+    font-size: 15px;
+  }
+  @media only screen and (max-width:768px) {
+    .boxes {
+      width: 100% !important;
+      margin: .3rem 0rem;
+    }
+    .form-control {
+      margin-left: 0rem !important;
+    }
+    .import-button-style {
+      margin-bottom: .4rem !important;
+      width: 100% !important;
+      font-size: 15px;
+    }
+    .export-button-style {
+      width: 100% !important;
+      font-size: 15px;
+    }
+    .customer-view-card-body {
+      width: 95%;
+    }
+    .btn-submit3 {
+      margin-bottom: 1rem!important;
+      width: 100% !important;
+    }
+  }

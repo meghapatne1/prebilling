@@ -1,14 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.customer_app')
 @section('content')
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-.pb-4, .py-4 {
-    padding-top: 0rem !important;
-}
+
 .grid-container {
     display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto;
     grid-gap: .6rem;
     padding: 10px;
     width:100%;
@@ -72,15 +70,8 @@ to {
   visibility: hidden;
 }
 }
-.sidebar-style{
-       
-        background-color: #ffa726;
-       }
-.navbar{
-    background: linear-gradient(90deg,#0c2646 0,#204065 60%,#2a5788) !important;
-    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 16%);
-}
-.details span{
+
+.details span {
     color:black;
 }
 .card {
@@ -100,23 +91,21 @@ li.details {
     border-radius: 20px;
     font-weight: 100;
     font-family: fantasy;
-        color: white;
+    color: white;
     display: flex;
     justify-content: space-between;
   }
-  .sidebar-style > p{
+  .sidebar-style > p {
     font-weight: 800;
     text-align: center;
   }
-  .token-box-style{
+  .token-box-style {
       background:white;
   }
-  .box-style-customer{
+  .box-style-customer {
     color: #f7f1f1;
     font-weight: 600;
- 
     font-family: inherit;
-   
     font-size: 1.2rem;
 }
 .box-style-customer > span > p> b{
@@ -143,22 +132,23 @@ background-image: linear-gradient(red, yellow);
         </ul>
         </div>
      @endif
-    <div class="row" style="margin-right:0px;">
-     <div class="col-md-4" style="background:#151414;"> 
-  <br>
-    <table class="table table-bordered" style="max-height:50px;overflow:auto;">
+    <div class="row" >
+    <div class="col-md-12" >
+    <table class="table table-bordered">
      <thead>
       <tr style="background-color: #272626d9 !important;color: cornsilk;">
-        <th colspan="2"><center><h5>Customer Account Information</h5></center></th>
+        <th colspan="3"><center><h5 class="text-light">Customer Account Information</h5></center></th>
       </tr>
       </thead>
       <tbody class="grad">
-      <tr><td>Total Token </td><td>{{ $productcustomers->total_token }}</td></tr>
-      <tr><td>Remaning Token </td><td>{{ $productcustomers->remaning_token }}</td></tr>
-      <tr><td>Cost Of Per Token </td><td>{{ $productcustomers->cost_of_per_token }}</td></tr>
+      <tr><td>Total Token : {{ $productcustomers->total_token }}</td>
+     <td>Remaning Token : {{ $productcustomers->remaning_token }}</td>
+      <td>Cost Of Per Token : {{ $productcustomers->cost_of_per_token }}</td></tr>
       </tbody>
       </table>
-
+     </div>
+     <div class="col-md-4" style="background:#151414;"> 
+      <br>
      <table class="table table-bordered" style="max-height:50px;overflow:auto;">
      <thead>
      <tr><th colspan="2"><center><h5 style="color:white;">Customer History </h5></center></th></tr>
@@ -185,8 +175,8 @@ background-image: linear-gradient(red, yellow);
     <h3>Available Token</h3>
     <div class="grid-container">
  
-        <?php $count = $productcustomers->remaning_token; ?>
-    @for ($i = 1 ; $i <= $count ; $i++)
+    <?php $count = $productcustomers->remaning_token; ?>
+    @for($i = 1 ; $i <= $count ; $i++)
     <div class="item1">
           <ul class="ul-class">
             <li>
@@ -198,11 +188,9 @@ background-image: linear-gradient(red, yellow);
         </div>
     @endfor
       </div>
-      
      </div>
-    
-
-</div></div>
+</div>
+</div>
 </div>
 
 

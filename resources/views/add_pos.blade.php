@@ -1,6 +1,11 @@
 @extends('layouts.app2')
 @section('content')
 <style>
+    .delete-edit-td-style{
+        display: flex;
+        justify-content: space-between;
+
+    }
     .col-lg-6.col-md-6.col-sm-6.col-xs-12 {
 
         padding: 1rem;
@@ -173,7 +178,7 @@
                                 <td>Deactive</td>
                                 @endif
                                 <td><a href="/pos_link_customers/{{$item->mobile}}" style="color:blueviolet!important;"> Link to customer</a></td>
-                                <td>
+                                <td class="delete-edit-td-style">
                                     <a href="/deletepos/{{$item->id}}" class="btn btn-danger btn-sm delete-style">Delete</a>
                                     <a href="/editpos/{{$item->id}}" class="btn btn-primary btn-sm edit-style">Edit</a>
                                 </td>

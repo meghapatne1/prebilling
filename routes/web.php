@@ -21,12 +21,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
-Route::get('/home3', [App\Http\Controllers\HomeController::class, 'home3'])->name('home3');
-
 Route::middleware(['is_customer'])->group(function () {
 Route::get('/customerhome', [App\Http\Controllers\HomeController::class, 'customerHome'])->name('customerhome');
 Route::get('/customertoken/{procus_id}', [App\Http\Controllers\HomeController::class, 'customer_token'])->name('customertoken');
+Route::get('/customer_account_detail', [App\Http\Controllers\HomeController::class, 'customer_account_detail'])->name('customer_account_detail');
+
 
 });
 
