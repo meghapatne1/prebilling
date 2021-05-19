@@ -142,6 +142,7 @@ class HomeController extends Controller
         DB::beginTransaction();
         try{
         $product_data = $request['name'];
+      
         $count=Array();
         foreach ($product_data as $key => $val) {
            //validation for user table mobile number
@@ -167,6 +168,7 @@ class HomeController extends Controller
             $user_table->is_admin = 3;
             $user_table->save();
             $count[]=$customer_info;
+            
         }
         DB::commit();
         $customer_count= count($count);
@@ -268,8 +270,23 @@ class HomeController extends Controller
         return view('manage_customer_account',compact('product_customer'));
 
     }
+    public function return_view_customer_account($customerid){
+
+        $customerdata = Customer::where('id', $customerid)->get();
+    
+        foreach($customerdata as $item){
+           $user_number = $item->user_mobile;
+        }
+        $getProduct = DB::table('products')->where('user_mobile','=',$user_number)->get();
+        return view('customer_account',compact('getProduct','customerdata'));
+
+    }
     
     public function add_customer_account(Request $request){
+
+        if($request->total_token < $request->no_of_token_utilized){
+            return redirect()->route('view_customer')->withError('Total token should not be less than total utilized token')->withInput();
+        }
 
         $customer = New Productcustomer;
         $customer->shift = $request->shift;
@@ -287,10 +304,36 @@ class HomeController extends Controller
         $customer->customer_id = $request->customer_id;
         $customer->save();
   
-       return redirect()->route('view_customer')->with('success','Customer account updated successfully');
+       return redirect()->route('view_customer')->with('success','Customer account added successfully');
 
     }
     
+    public function update_poroduct_customer(Request $request){
+
+        if($request->total_token < $request->no_of_token_utilized){
+            return redirect()->route('view_customer')->withError('Total token should not be less than total utilized token')->withInput();
+        }
+        try{  
+            $Productcustomer = Productcustomer::find($request->procust_id);
+            $Productcustomer->amount = $request->amount;
+            $Productcustomer->cost_of_per_token = $request->cost_of_per_token;
+            $Productcustomer->total_token = $request->total_token;
+            $Productcustomer->no_of_token_utilized = $request->no_of_token_utilized;
+            $Productcustomer->remaning_token = $request->remaning_token;
+            $Productcustomer->remaning_token = $request->remaning_token;
+            $Productcustomer->product_name = $request->product_name;
+            $Productcustomer->token_expire_date = $request->token_expire_date;
+            $Productcustomer->save();   
+          
+            return redirect()->route('view_customer')->with('success','data updated successfully');
+            } catch (Exception $exception) {
+               
+                return back()->withError( $exception->getMessage())->withInput();
+            }
+        
+       
+    }
+
     public function deliver_token($procust_id){
         
         return view('delivertoken',compact('procust_id'));
@@ -450,34 +493,14 @@ class HomeController extends Controller
     public function edit_product_customer($procus_id){
       
         $Productcustomer =  Productcustomer::where('id', $procus_id)->first();
-        return view('edit_product_customer',compact('Productcustomer')); 
+        $Product =  Product::all();
+        return view('edit_product_customer',compact('Productcustomer','Product')); 
     }
     
     
     
 
-    public function update_poroduct_customer(Request $request){
-
-        try{  
-            $Productcustomer = Productcustomer::find($request->procust_id);
-            $Productcustomer->amount = $request->amount;
-            $Productcustomer->cost_of_per_token = $request->cost_of_per_token;
-            $Productcustomer->total_token = $request->total_token;
-            $Productcustomer->no_of_token_utilized = $request->no_of_token_utilized;
-            $Productcustomer->remaning_token = $request->remaning_token;
-            $Productcustomer->remaning_token = $request->remaning_token;
-            $Productcustomer->product_name = $request->product_name;
-            $Productcustomer->token_expire_date = $request->token_expire_date;
-            $Productcustomer->save();   
-          
-            return redirect()->route('view_customer')->with('success','data updated successfully');
-            } catch (Exception $exception) {
-               
-                return back()->withError( $exception->getMessage())->withInput();
-            }
-        
-       
-    }
+  
 
 
 

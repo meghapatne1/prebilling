@@ -20,10 +20,14 @@ class CreateCustomerTable extends Migration
             $table->string('colony')->nullable();
             $table->string('city')->nullable();
             $table->bigInteger('mobile1')->unique();
-            $table->boolean('status')->nullable()->default(1);         
+            $table->bigInteger('user_mobile')->nullable();
+            $table->boolean('status')->nullable()->default(1);  
+            $table->bigInteger('pincode')->nullable();           
             $table->timestamps();
         });
     }
+
+    
 
     /**
      * Reverse the migrations.

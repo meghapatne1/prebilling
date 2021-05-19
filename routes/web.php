@@ -66,7 +66,7 @@ Route::get('/edit_product_customer/{productcustomerid}', [App\Http\Controllers\H
 Route::post('/update_poroduct_customer', [App\Http\Controllers\HomeController::class, 'update_poroduct_customer'])->name('update_poroduct_customer');
 
 
-
+Route::get('/return_view_customer_account/{customer_id}', [App\Http\Controllers\HomeController::class, 'return_view_customer_account']);
 
 Route::post('/add_customer_account', [App\Http\Controllers\HomeController::class, 'add_customer_account'])->name('add_customer_account');
 

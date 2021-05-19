@@ -48,6 +48,21 @@
             <p>{{ $message }}</p>
         </div>
     @endif
+
+    @if (session('error'))
+            <div class="alert alert-danger">{{ session('error') }}</div>
+            @endif
+
+            @if($errors->any())
+            <div class="alert alert-danger">
+
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
     <div class="card">
     <div class="card-header">Manage Customer</div> 
     <div class="card-body"> 
@@ -83,9 +98,11 @@
             
       
             <td class="view-customer-button">
+            <a class="btn btn-dark btn-sm mb-1 update-button-style" href="/return_view_customer_account/{{$item->id}}">Add Account</a>
             <a class="btn btn-dark btn-sm mb-1 use-token-button" href="/manage_customer_account/{{$item->id}}">Manage Account</a>
             <a href="/deletecustomer/{{$item->id}}"  class="btn btn-danger btn-sm delete-token-button">Delete</a>
-            <a class="btn btn-primary btn-sm mb-1 edit-token-button" href="/editcustomer/{{$item->id}}">Edit/Update Account</a>
+            <a class="btn btn-primary btn-sm mb-1 edit-token-button" href="/editcustomer/{{$item->id}}">Edit</a>
+
             </td>
         </tr>
         @endforeach

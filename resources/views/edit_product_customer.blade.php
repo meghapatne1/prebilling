@@ -42,7 +42,7 @@
                                     <lable class="lable-style">Amount </lable>
                                     <div class="form-control-icon-name">
                                     <i class="fa fa-vcard-o icon"></i>
-                                    <input name="amount" type="text" class="form-control-style" value="{{ $Productcustomer->amount }}">
+                                    <input name="amount" type="text" class="form-control-style" value="{{ $Productcustomer->amount }}" required>
                                 </div>
                             </div>
 
@@ -65,7 +65,7 @@
                                     <lable class="lable-style">Utilized Token </lable>
                                     <div class="form-control-icon-name">
                                     <i class="fa fa-vcard-o icon"></i>
-                                    <input name="no_of_token_utilized" type="text" class="form-control-style" value="{{ $Productcustomer->no_of_token_utilized }}">
+                                    <input name="no_of_token_utilized" type="text" class="form-control-style" value="{{ $Productcustomer->no_of_token_utilized }}" required>
                                 </div>
                                 </div>
 
@@ -73,14 +73,22 @@
                                     <lable class="lable-style">Remaning Token </lable>
                                     <div class="form-control-icon-name">
                                     <i class="fa fa-vcard-o icon"></i>
-                                    <input name="remaning_token" type="text" class="form-control-style" value="{{ $Productcustomer->remaning_token }}" >
+                                    <input name="remaning_token" type="text" class="form-control-style" value="{{ $Productcustomer->remaning_token }}" required>
                                 </div>
                                 </div>
                                 <div class="input-group">
                                     <lable class="lable-style">Product Name </lable>
                                     <div class="form-control-icon-name">
                                     <i class="fa fa-vcard-o icon"></i>
-                                    <input name="product_name" type="text" class="form-control-style" value="{{ $Productcustomer->product_name }}" >
+                                    <select name="product_name" class="form-control-style" id="sel1" required>
+                                        @foreach($Product as $product)
+                                        @if($product->pro_name ==  $Productcustomer->product_name )
+                                        <option value="{{ $product->pro_name }}" selected>{{ $product->pro_name }}</option>
+                                        @else
+                                        <option value="{{ $product->pro_name }}">{{ $product->pro_name }}</option>
+                                        @endif
+                                        @endforeach
+                                        </select>
                                 </div>
                                 </div>
 
@@ -88,7 +96,7 @@
                                     <lable class="lable-style">Expire Date </lable>
                                     <div class="form-control-icon-name">
                                     <i class="fa fa-vcard-o icon"></i>
-                                    <input name="token_expire_date" type="text" class="form-control-style" value="{{ $Productcustomer->token_expire_date }}" >
+                                    <input name="token_expire_date" type="text" class="form-control-style" value="{{ $Productcustomer->token_expire_date }}" required>
                                 </div>
                                 </div>
                                 <div class="input-group" style="width:100%;">

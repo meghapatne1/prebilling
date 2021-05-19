@@ -9,9 +9,6 @@
     }
 </style>
 
-
-
-
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -63,7 +60,7 @@
                                     <lable class="lable-style">Address </lable>
                                     <div class="form-control-icon-name">
                                     <i class="fa fa-vcard-o icon"></i>
-                                    <input name="address" type="text" class="form-control-style" value="{{$item->address}}">
+                                    <input name="address" type="text" class="form-control-style" value="{{$item->address}}" required>
                                 </div>
                             </div>
 
@@ -71,7 +68,7 @@
                                     <lable class="lable-style">City </lable>
                                     <div class="form-control-icon-name">
                                     <i class="ion-ios-home-outline icon" style="font-size:20px;"></i>
-                                    <input name="city" type="text" class="form-control-style" value="{{$item->city}}" required="">
+                                    <input name="city" type="text" class="form-control-style" value="{{$item->city}}" required>
                                 </div>
                                 </div>
 
@@ -79,14 +76,28 @@
                                     <lable class="lable-style">Pincode </lable>
                                     <div class="form-control-icon-name">
                                     <i class="ion-social-whatsapp-outline icon" style="font-size:18px;"></i>
-                                    <input name="pincode" type="text" class="form-control-style" value="{{$item->pincode}}" minlength="6">
+                                    <input name="pincode" type="text" class="form-control-style" value="{{$item->pincode}}" minlength="6" required>
                                 </div>
                                 </div>
                                 <div class="input-group">
-                                    <lable class="lable-style">Status </lable>
                                     <div class="form-control-icon-name">
-                                    <i class="ion-social-whatsapp-outline icon" style="font-size:18px;"></i>
-                                    <input name="status" type="text" class="form-control-style" value="{{$item->status}}">
+                                
+                                    @if($item->status == 1)
+                                        <span class="lable-style">Status </span>
+                                        <input type="radio" name="status" value="1" checked>
+                                        <label for="male" class="lable-style">Active</label>
+                                        <input type="radio" name="status" value="2">
+                                        <label for="female"class="lable-style">Inactive</label>
+                                        @else
+                                        <span class="lable-style">Status </span> 
+                                        <input type="radio" name="status" value=" 1">
+                                        <label for="male" class="lable-style">Active</label>
+                                        <input type="radio" name="status" value="2" checked>
+                                        <label for="female"class="lable-style">Inactive</label>
+
+                                    @endif
+
+
                                 </div>
                                 </div>
                                 <div class="input-group" style="width:100%;">

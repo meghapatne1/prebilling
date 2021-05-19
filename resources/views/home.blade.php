@@ -49,6 +49,9 @@
         
 
     }
+    .boxes{
+        width:18rem !important;
+    }
 </style>
 
 <div class="container">
@@ -94,8 +97,8 @@
                         </div>
                         <br>
                         <div class="button-skip-customer-style">
-                            <input type="submit" id="submit" name="submit" class="btn-submit" value="Submit">
-                            <a href="/add_customers_info" class="btn skip-add-customer">Skip/Add Customer</a>
+                            <input type="submit" id="submit" name="submit" class="btn-submit" style="margin-left:27rem;" value="Submit">
+                            <a href="/add_customers_info" class="btn btn-sm skip-add-customer">Skip/Add Customer</a>
                         </div>
 
                         <div id="lineBreak"></div>
