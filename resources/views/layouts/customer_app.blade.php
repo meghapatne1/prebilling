@@ -69,6 +69,7 @@
 .navbar{
   background: linear-gradient(#c20169 ,#800080ab)!important;
 }
+
 </style>
 </head>
 
@@ -279,8 +280,7 @@
             document.getElementById("sidebar-wrapper").style.width = "0px";
             document.getElementById("my-navbar-close").style.marginLeft = "0rem";
             document.getElementById("top-container").style.marginLeft = "0rem";
-            document.getElementById("margin-left-card").style.marginLeft = "0rem";
-            document.getElementById("footer-style").style.marginLeft = "0rem";
+           
 
 
 
@@ -289,8 +289,8 @@
             document.getElementById("sidebar-wrapper").style.width = "270px";
             document.getElementById("my-navbar-close").style.marginLeft = "16rem";
             document.getElementById("top-container").style.marginLeft = "15rem";
-            document.getElementById("margin-left-card").style.marginLeft = "0rem";
-            document.getElementById("footer-style").style.marginLeft = "15rem";
+            
+           
 
 
         }

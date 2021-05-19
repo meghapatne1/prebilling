@@ -3,7 +3,8 @@
 @section('content')
 <style>
     body{
-        background: linear-gradient(115deg, #56d8e4 10%, #9f01ea 90%);
+        background: linear-gradient(115deg, #56d8e4 10%, #9f01ea 90%) no-repeat;
+        min-height:655px; 
     }
 </style>
 <div class="container">

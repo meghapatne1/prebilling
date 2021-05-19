@@ -1,6 +1,11 @@
 @extends('layouts.pos_app')
 @section('content')
-
+<style>
+    .heading-pos{
+        font-size: 18px;
+        font-family: 'Roboto';
+    }
+</style>
 
 <div class="container">
     <div class="row justify-content-center">
@@ -23,9 +28,9 @@
         </div>
      @endif
             <table class="table table-bordered">
-            <h3>User Information</h3>
+            <h3 class="heading-pos">User Information</h3>
             <thead>
-            <tr>
+            <tr class="table-row">
             <th>Name</th>
             <th>Mobile</th>
             <th>Address</th>
@@ -33,7 +38,7 @@
             </thead>
             <tbody>
             @foreach($pos_user_info as $item)
-            <tr>
+            <tr class="table-row-data">
             <td>{{$item->name}}</td>
             <td>{{$item->mobile}}</td>
             <td>{{$item->address}},{{$item->city}},{{$item->pincode}}</td>
@@ -43,9 +48,9 @@
             </table>
 
             <table class="table table-bordered">
-            <h3>Assigned Customer Information</h3>
+            <h3 class="heading-pos">Assigned Customer Information</h3>
             <thead>
-            <tr>
+            <tr class="table-row">
             <th>Name</th>
             <th>Mobile</th>
             </tr>
