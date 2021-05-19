@@ -44,8 +44,8 @@
                                 <input type="text" class="boxes" placeholder="Enter Product Name" name="pro_name" id="field_1" value="" required>
                                 <input type="text" class="boxes" placeholder="Enter Price" name="pro_price" value="" required>
                                 <input type="text" class="boxes" placeholder="Measurement Unit" name="pro_unit" value="" required>
-                                
-                                <a href="#" class="removeclass"></a>
+                                <input type="submit" id="submit" name="submit" class="btn-submit3" value="Submit">
+
                             </div>
                         </div>
 
@@ -56,7 +56,6 @@
                         @csrf
                         <input type="file" name="file" class="form-control">
                         <br>
-                        <input type="submit" id="submit" name="submit" class="btn-submit3" value="Submit">
                         <div class="floar-right" style="float:right">
                             <button class="btn btn-success import-button-style">Import Product Data</button>
                             <a class="btn btn-warning export-button-style" href="{{ route('export') }}">Export Product Data</a>

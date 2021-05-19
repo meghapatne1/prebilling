@@ -47,6 +47,7 @@
                                 <input type="number" placeholder="Customer Mobile" class="boxes customer-view-form" name="mobile1[]" value="" required>
                                 <input type="text" placeholder="Customer Colony" class="boxes customer-view-form" name="colony[]" value="" required>
                                 <input type="number" placeholder="Customer Pincode" class="boxes customer-view-form" name="pincode[]" value="" required>
+                                <input type="submit" name="submit" class="btn btn-submit2" value="Submit">
 
                                 <a href="#" class="removeclass"></a>
                             </div>
@@ -57,11 +58,11 @@
 
                     <form action="{{ route('importCustomer') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <input type="file" name="file" class="form-control">
                         <br>
-                        <input type="submit" name="submit" class="btn btn-submit2" value="Submit">
+                        <input type="file" name="file" class="form-control">
+                      
 
-                        <div class="floar-right" style="float:right">
+                        <div class="float-right" style="float:right">
                             <button class="btn btn-success import-button-style">Import Customer Data</button>
                             <a class="btn btn-warning export-button-style" href="{{ route('exportCustomer') }}">Export Customer Data</a>
                         </div>
