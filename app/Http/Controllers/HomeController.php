@@ -61,7 +61,8 @@ class HomeController extends Controller
     public function customer_token($procus_id)
     { 
        $procus_id=$procus_id; 
-       $customer_history=DB::table('customer_histories')->where('customer_mobile','=',Auth::user()->mobile)->get();
+       $customer_history=DB::table('customer_histories')->where('customer_mobile','=',Auth::user()->mobile)
+       ->where('pro_cus_id','=',$procus_id)->get();
        $productcustomers=DB::table('productcustomers')->where('id','=',$procus_id)->first();
 
       return view('customer_token',compact('productcustomers','customer_history'));
@@ -72,16 +73,70 @@ class HomeController extends Controller
         $pos_user_mobile= Auth::user()->mobile;
         $pos_user_info = DB::table('pointofsales')->where('mobile','=',$pos_user_mobile)->get();
         $pos_customers = DB::table('poscustomers')->where('pos_mobile','=',$pos_user_mobile)->get();
-    
+ 
         return view('PosDashboard',compact('pos_user_info','pos_customers'));
     }
 
-      public function getCustomer($id)
+      public function getCustomer($mobile)
     {
-        $get_customers = DB::table('customers')->where('id','=',$id)->get();
-        
-        return view('customerToken',compact('get_customers'));
+        $get_customers = DB::table('productcustomers')->where('customer_mobile','=',$mobile)->get();
+       
+        $get_history = DB::table('customer_histories')->where('user_mobile','=',Auth::user()->mobile)
+        ->where('customer_mobile','=',$mobile)->get();
+       
+        return view('customerToken',compact('get_customers','get_history'));
     }
+
+    public function use_token(Request $request)
+    {
+        
+        DB::beginTransaction();
+        try{
+    
+        $customer = Customer::find($request->customer_id);
+        $pro_customer_data = Productcustomer::find($request->pro_cus_id);
+            // validation if remaning token is less than use token it will not allow
+            if($request->no_of_token_utilized > $pro_customer_data->remaning_token){
+            return back()->withError('You can not use more than ' . $pro_customer_data->remaning_token . ' token')->withInput();
+            }
+            // validation if remaning token is less than use token it will not allow 
+        
+        $pro_customer_data->no_of_token_utilized = $request->no_of_token_utilized+$pro_customer_data->no_of_token_utilized ;
+        $pro_customer_data->remaning_token = $pro_customer_data->total_token -  $pro_customer_data->no_of_token_utilized;
+        $pro_customer_data->save();
+
+
+        $customer_history = New Customer_history;
+        $customer_history->customer_id=$request->customer_id;
+        $customer_history->customer_name=$customer->name;
+        $customer_history->customer_mobile=$request->customer_mobile;
+        $customer_history->product_name=$pro_customer_data->product_name;
+        $customer_history->cost_of_per_token=$pro_customer_data->cost_of_per_token;
+        $customer_history->no_of_token_utilized=$request->no_of_token_utilized;
+        $customer_history->remaning_token=$pro_customer_data->remaning_token;
+        $customer_history->total_token=$pro_customer_data->total_token;
+        $customer_history->total_token=$pro_customer_data->total_token;
+        $customer_history->pro_cus_id= $request->pro_cus_id;
+        $user = Auth::user();
+        $customer_history->user_id=$user->id;
+        $customer_history->user_mobile=$user->mobile;
+        $customer_history->save();
+        DB::commit();
+        return redirect()->route('poshome')->with('success','Token used successfully');
+        } catch (Exception $exception) {
+
+            DB::rollback();
+           
+            return back()->withError( $exception->getMessage())->withInput();
+        }
+
+
+
+
+
+
+    }
+    
 
     public function home3()
     {
@@ -367,6 +422,7 @@ class HomeController extends Controller
         $customer_history->remaning_token=$customer_data->remaning_token;
         $customer_history->total_token=$customer_data->total_token;
         $customer_history->user_mobile= Auth::user()->mobile;
+        $customer_history->pro_cus_id= $request->procust_id;
         $user = Auth::user();
         $customer_history->user_id=$user->id;
         $customer_history->save();

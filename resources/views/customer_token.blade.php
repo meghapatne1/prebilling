@@ -256,17 +256,21 @@
         </tr>
       </thead>
       <tbody>
-        <?php $total = 0; ?>
+        <?php 
+          $total = 0;
+        
+         ?>
         @foreach($customer_history as $value)
         <tr class="grad2">
-          <td> <span>{{$value->no_of_token_utilized}}</span></td>
+          <td> <span>{{$value->no_of_token_utilized}} </span></td>
           <td> <span>{{ \Carbon\Carbon::parse( $value->created_at)->format('d-m-Y')}} </span></td>
           <?php $total = $total + $value->no_of_token_utilized; ?>
         </tr>
         @endforeach
         <tr class="grad2">
+        <td><b>{{$total}}</b></td>
           <td><b>Total Used Token</b></td>
-          <td><b>{{$total}}</b></td>
+        
         </tr>
       </tbody>
     </table>
@@ -276,8 +280,10 @@
     <h3 class="token-heading">Available Token</h3>
     <div class="grid-container">
 
-      <?php $count = $productcustomers->remaning_token; ?>
+      <?php $count = $productcustomers->remaning_token;
+        $x = 1; ?>
       @for($i = 1 ; $i <= $count ; $i++) <div class="item1">
+      <span>{{$x++}} </span>
         <ul class="ul-class">
           <li>
             <a href="">

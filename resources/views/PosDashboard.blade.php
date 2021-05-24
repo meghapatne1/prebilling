@@ -13,7 +13,15 @@
             <div class="card">
                 <div class="card-header">Pos Dashboard</div>
                 <div class="card-body">
-                @if (session('error'))
+   @if ($message = Session::get('success'))
+    <div class="alert alert-success">
+      <p>{{ $message }}</p>
+    </div>
+    @endif
+
+
+    
+     @if (session('error'))
         <div class="alert alert-danger">{{ session('error') }}</div>
       @endif
     
@@ -58,7 +66,7 @@
             <tbody>
             @foreach($pos_customers as $data)
             <tr>
-            <td><a href="/getCustomer/{{$data->id}}">{{$data->customer_name}}</a></td>
+            <td><a href="/getCustomer/{{$data->customer_mobile}}">{{$data->customer_name}}</a></td>
             <td>{{$data->customer_mobile}}</td>
             </tr>
             @endforeach
