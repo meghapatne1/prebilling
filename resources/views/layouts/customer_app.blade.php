@@ -69,7 +69,19 @@
 .navbar{
   background: linear-gradient(#c20169 ,#800080ab)!important;
 }
+@media only screen and (max-width:1200px) {
+            #my-navbar-close {
+                margin-left: 0rem !important;
+            }
 
+            #top-container {
+                margin: 0rem 0rem!important;
+
+            }
+            #sidebar-wrapper{
+                width: 0px;
+            }
+        }
 </style>
 </head>
 
