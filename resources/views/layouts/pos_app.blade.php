@@ -95,7 +95,7 @@
                 <ul class="unorder-list">
 
                     <li class="list-itmes" onclick="opendash()">
-                        <a href="/customerhome" class="nav-link text-left a-href" role="button" aria-haspopup="true" aria-expanded="false">
+                        <a href="/poshome" class="nav-link text-left a-href" role="button" aria-haspopup="true" aria-expanded="false">
                         <span>
                          <i class="fa fa-tachometer " aria-hidden="true"></i>
                          Dashboard
@@ -103,11 +103,7 @@
                         </a>
                        </li>
 
-                    <li class="list-itmes">
-                    <a href="/customer_account_detail" class="nav-link text-left  botton-ahref" role="button">
-                    <i class="fa fa-car" aria-hidden="true"></i>
-                     Account Info</a>
-                    </li>
+                
                 </ul>
 
 

@@ -2,8 +2,6 @@
 @section('content')
 
 
-
-
 <div class="main-content">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -45,7 +43,7 @@
                                 <input type="text" class="boxes" placeholder="Enter Price" name="pro_price" value="" required>
                                 <input type="text" class="boxes" placeholder="Measurement Unit" name="pro_unit" value="" required>
                                 <input type="submit" id="submit" name="submit" class="btn-submit3" value="Submit">
-
+                                <a href="#" class="removeclass"></a>
                             </div>
                         </div>
 
@@ -54,9 +52,10 @@
                     
                     <form action="{{ route('importProduct') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <input type="file" name="file" class="form-control">
-                        <br>
-                        <div class="floar-right" style="float:right">
+                        <input type="file" name="file" class="form-control-input">
+                        
+             
+                        <div class="floar-right">
                             <button class="btn btn-success import-button-style">Import Product Data</button>
                             <a class="btn btn-warning export-button-style" href="{{ route('export') }}">Export Product Data</a>
                         </div>

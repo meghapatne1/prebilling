@@ -1,6 +1,11 @@
 @extends('layouts.pos_app')
 @section('content')
-
+<style>
+    .heading-pos{
+        font-size: 18px;
+        font-family: 'Roboto';
+    }
+</style>
 
 <div class="container">
     <div class="row justify-content-center">
@@ -8,7 +13,15 @@
             <div class="card">
                 <div class="card-header">Pos Dashboard</div>
                 <div class="card-body">
-                @if (session('error'))
+   @if ($message = Session::get('success'))
+    <div class="alert alert-success">
+      <p>{{ $message }}</p>
+    </div>
+    @endif
+
+
+    
+     @if (session('error'))
         <div class="alert alert-danger">{{ session('error') }}</div>
       @endif
     
@@ -23,9 +36,9 @@
         </div>
      @endif
             <table class="table table-bordered">
-            <h3>User Information</h3>
+            <h3 class="heading-pos">User Information</h3>
             <thead>
-            <tr>
+            <tr class="table-row">
             <th>Name</th>
             <th>Mobile</th>
             <th>Address</th>
@@ -33,7 +46,7 @@
             </thead>
             <tbody>
             @foreach($pos_user_info as $item)
-            <tr>
+            <tr class="table-row-data">
             <td>{{$item->name}}</td>
             <td>{{$item->mobile}}</td>
             <td>{{$item->address}},{{$item->city}},{{$item->pincode}}</td>
@@ -43,9 +56,9 @@
             </table>
 
             <table class="table table-bordered">
-            <h3>Assigned Customer Information</h3>
+            <h3 class="heading-pos">Assigned Customer Information</h3>
             <thead>
-            <tr>
+            <tr class="table-row">
             <th>Name</th>
             <th>Mobile</th>
             </tr>
@@ -53,7 +66,7 @@
             <tbody>
             @foreach($pos_customers as $data)
             <tr>
-            <td><a href="/getCustomer/{{$data->id}}">{{$data->customer_name}}</a></td>
+            <td><a href="/getCustomer/{{$data->customer_mobile}}">{{$data->customer_name}}</a></td>
             <td>{{$data->customer_mobile}}</td>
             </tr>
             @endforeach

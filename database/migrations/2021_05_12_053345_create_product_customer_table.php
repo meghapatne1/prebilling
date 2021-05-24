@@ -28,6 +28,7 @@ class CreateProductCustomerTable extends Migration
             $table->bigInteger('user_mobile')->nullable(); 
             $table->date('token_expire_date')->nullable(); 
             $table->bigInteger('customer_id')->nullable();  
+            $table->bigInteger('pro_cus_id')->nullable();  
             $table->timestamps();
         });
     }
