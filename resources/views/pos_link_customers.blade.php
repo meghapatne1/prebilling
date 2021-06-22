@@ -34,12 +34,11 @@
       <div class="card-header">
         <span class="Add-Product"> Assign Customer To Pos</span>
       </div>
-
       <div class="card-body">
         <form action="/save_pos_customers" method="post" class="form-style">
           @csrf
           <b class="choose-cutomer-style">Choose The Customers</b>
-          <input type="text" id="myInput-style" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+          <input type="text" id="myInput" class="myInput-style" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
           <br><br>
           <div class="select-deselect-style">
             <input type="button" class="btn select-all-button btn-sm" onclick='selects()' value="Select All" />
@@ -48,13 +47,13 @@
           <div id="myUL">
             @foreach($get_customers as $item)
 
-            <div class="checkbox">
+            <li class="checkbox">
 
               <label class="checkbox-style-label"><input type="checkbox" name="customer_mobile[]" value="{{$item->mobile1}}">
                 {{$item->name}}-{{$item->mobile1}}
               </label>
 
-            </div>
+</li>
 
             @endforeach
           </div>
@@ -101,10 +100,13 @@
 
     var input, filter, ul, li, la, i, txtValue;
     input = document.getElementById("myInput");
+  
     filter = input.value.toUpperCase();
     ul = document.getElementById("myUL");
     li = ul.getElementsByTagName("li");
 
+ 
+    console.log(li.length); 
 
     for (i = 0; i < li.length; i++) {
       la = li[i].getElementsByTagName("label")[0];

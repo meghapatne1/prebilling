@@ -9691,11 +9691,13 @@ input.form-control {
   font-family: system-ui;
 }
 
-#myInput-style {
+.myInput-style {
   box-shadow: 1px 1px 4px darkslategrey;
   font-family: 'Roboto';
 }
-
+li{
+  list-style-type:none;
+}
 .btn-submit:hover {
   color: white;
 }
