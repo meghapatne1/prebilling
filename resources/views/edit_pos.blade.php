@@ -7,6 +7,22 @@
         border-radius: 5px;
         margin: 0rem auto;
     }
+    @media only screen and (max-width:768px) {
+        .fa {
+            display:none;
+        }
+        .lable-style {
+            margin-right: .2rem!important;
+        }
+    }
+    @media only screen and (max-width:320px) {
+        .lable-style {
+            font-family: monospace;
+            font-size: 12px!important;
+            font-weight: 600!important;
+        }
+
+    }
 </style>
 
 <div class="container-fluid">
@@ -67,7 +83,7 @@
                                 <div class="input-group">
                                     <lable class="lable-style">City </lable>
                                     <div class="form-control-icon-name">
-                                    <i class="ion-ios-home-outline icon" style="font-size:20px;"></i>
+                                    <i class="fa fa-home icon" style="font-size:20px;"></i>
                                     <input name="city" type="text" class="form-control-style" value="{{$item->city}}" required>
                                 </div>
                                 </div>
@@ -75,7 +91,7 @@
                                 <div class="input-group">
                                     <lable class="lable-style">Pincode </lable>
                                     <div class="form-control-icon-name">
-                                    <i class="ion-social-whatsapp-outline icon" style="font-size:18px;"></i>
+                                    <i class="fa fa-map-marker icon" style="font-size:18px;"></i>
                                     <input name="pincode" type="text" class="form-control-style" value="{{$item->pincode}}" minlength="6" required>
                                 </div>
                                 </div>
@@ -93,7 +109,7 @@
                                         <input type="radio" name="status" value=" 1">
                                         <label for="male" class="lable-style">Active</label>
                                         <input type="radio" name="status" value="2" checked>
-                                        <label for="female"class="lable-style">Inactive</label>
+                                        <label for="female"class="lable-style inactive2">Inactive</label>
 
                                     @endif
 

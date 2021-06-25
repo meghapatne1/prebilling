@@ -1,6 +1,14 @@
 @extends('layouts.app2')
 @section('content')
 <style>
+         /* start code by @nisha */
+    .card{
+        border-radius: 2.25rem!important;
+    }
+    .card-header:first-child {
+        border-radius: calc(2.25rem - 1px) calc(2.25rem - 1px) 0 0!important;
+        }
+    /* end code by @nisha */
     .delete-edit-td-style{
         display: flex;
         justify-content: space-between;
@@ -45,8 +53,20 @@
         background: rgb(6, 14, 131) !important;
         background: linear-gradient(0deg, rgba(6, 14, 131, 1) 0%, rgba(12, 25, 180, 1) 100%) !important;
         font-family: "roboto";
-        width: 50% !important;
+        width: 100% !important;
+        margin-left:2px!important;
+        border: 1px solid red!important;
     }
+          /* start code by @nisha */
+             .btn-sm:hover,
+             .btn-sm:focus,
+             .btn-sm:active
+             {
+                outline:0px !important;
+                -webkit-appearance:none;
+                box-shadow: none !important;
+             }
+              /* end code by @nisha */
 
     @media only screen and (max-width:768px) {
         .col-lg-6.col-md-6.col-sm-6.col-xs-12 {
@@ -61,12 +81,12 @@
         }
 
         .delete-style {
-            width: 100% !important;
+            width: 50% !important;
         }
 
         .edit-style {
-            width: 100% !important;
-            margin-top: .4rem;
+            width: 50% !important;
+            
         }
 
         .form-control-style {
@@ -74,14 +94,20 @@
             width: 100%;
             margin-left: 0rem;
         }
-
+           /*start style by nisha*/
         .fa {
-            margin-bottom: .5rem;
+            display:none;
         }
+           /*end style by nisha*/
 
         .submit-button-style {
            width: 100% !important;
         }
+        /*start style by nisha*/
+        .row {
+            justify-content:center!important;
+        }
+                /*end style by nisha*/
         }
 </style>
 
@@ -122,7 +148,7 @@
                                 </div>
 
                                 <div class="input-group">
-                                    <i class="ion-social-whatsapp-outline icon" style="font-size:18px;"></i>
+                                    <i class="fa fa-phone icon" style="font-size:18px;"></i>
                                     <input name="mobile" type="text" class="form-control-style" value="" placeholder="Enter Mobile Number" minlength="10" required="">
                                 </div>
 
@@ -132,12 +158,12 @@
                                 </div>
 
                                 <div class="input-group">
-                                    <i class="ion-ios-home-outline icon" style="font-size:20px;"></i>
+                                    <i class="fa fa-home icon" style="font-size:20px;"></i>
                                     <input name="city" type="text" class="form-control-style" value="" required="" placeholder="Enter City">
                                 </div>
 
                                 <div class="input-group">
-                                    <i class="ion-social-whatsapp-outline icon" style="font-size:18px;"></i>
+                                    <i class="fa fa-map-marker  icon" style="font-size:18px;"></i>
                                     <input name="pincode" type="text" class="form-control-style" value="" placeholder="Enter Pin Code" minlength="6">
                                 </div>
                                 <div class="input-group" style="width: 100%;">

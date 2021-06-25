@@ -1,6 +1,29 @@
 @extends('layouts.app2')
 @section('content')
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Mate+SC&display=swap" rel="stylesheet">
+<style>
+        /* start code by @nisha */
+   .card{
+      border-radius: 1.25rem!important;
+   }
+   .card-header:first-child {
+    border-radius: calc(1.25rem - 1px) calc(1.25rem - 1px) 0 0!important;
+    }
+    .btn-submit3 {
+        margin-top: .5rem!important;
 
+    }
+    @media only screen and (max-width:360px){
+        .form-control-input{
+            font-size:12px!important;
+
+        }
+
+    }
+    
+    /* end code by @nisha */
+</style>
 
 <div class="main-content">
     <div class="row justify-content-center">
@@ -10,7 +33,7 @@
                     <span class="Add-Product"> Add Product </span>
 
                 </div>
-                <div class="card-body customer-view-card-body">
+                <div class="card-body customer-view-card-body" style="padding-bottom:37px;">
 
 
                     @if ($message = Session::get('success'))
@@ -49,10 +72,12 @@
 
 
                     </form>
+                    <hr>
                     
                     <form action="{{ route('importProduct') }}" method="POST" enctype="multipart/form-data">
+                    <h5 style="text-align:center;font-family: 'Mate SC', serif;">  Bulk Product  Upload</h5>
                         @csrf
-                        <input type="file" name="file" class="form-control-input">
+                        <input type="file" name="file" class="form-control-input " >
                         
              
                         <div class="floar-right">

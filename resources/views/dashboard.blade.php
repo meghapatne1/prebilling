@@ -1,6 +1,15 @@
 @extends('layouts.app2')
 @section('content')
 <style>
+   /* start code by @nisha */
+   .card{
+      border-radius: 2.25rem!important;
+   }
+   .card-header:first-child {
+    border-radius: calc(2.25rem - 1px) calc(2.25rem - 1px) 0 0!important;
+    }
+             
+    /* end code by @nisha */
     @media only screen and (max-width:768px) {
         .box-style {
             width: 100%;
