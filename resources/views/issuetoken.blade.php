@@ -7,6 +7,14 @@
     border-radius: 5px;
     box-shadow: 1px 1px 16px #7906f0;
    }
+                        .btn:hover,
+                        .btn:focus,
+                        .btn:active
+                        {
+                            outline:0px !important;
+                            -webkit-appearance:none;
+                            box-shadow: none !important;
+                        }
 </style>
 <div class="container-fluid">
     <div class="row justify-content-center">

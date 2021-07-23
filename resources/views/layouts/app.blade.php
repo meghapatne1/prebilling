@@ -16,6 +16,12 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <style>
+     a:hover{
+         text-decoration:none!important;
+         color:#fff!important;
+     }
+    </style>
 
   
     <script>
@@ -70,7 +76,7 @@ $(AddButton).click(function (e) {
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md shadow-sm laravel-header">
+        <nav class="navbar navbar-expand-md shadow-sm laravel-header" style="background: linear-gradient(#c20169 ,#800080ab)!important;">
             <div class="container">
                    <span class="text-white head_title"> {{ config('app.name', 'Laravel') }}</span>
                
