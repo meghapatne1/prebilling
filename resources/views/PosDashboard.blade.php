@@ -42,6 +42,7 @@
             <th>Name</th>
             <th>Mobile</th>
             <th>Address</th>
+            <th>Change Password</th>
             </tr>
             </thead>
             <tbody>
@@ -50,6 +51,7 @@
             <td>{{$item->name}}</td>
             <td>{{$item->mobile}}</td>
             <td>{{$item->address}},{{$item->city}},{{$item->pincode}}</td>
+            <td><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#update">Change</button></td>
             </tr>
             @endforeach
             </tbody>
@@ -73,6 +75,29 @@
             </tbody>
             </table>
               
+
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="update" role="dialog">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/update_pos_pswd" method="POST">
+                                    @csrf
+                                    <lable>Enter New Password </lable>
+                                    <input type="password" name="password" value=""/>  <br><br>
+                                    <input type="submit" name="submit" value="submit" >  
+                                    </form>
+                                </div>
+                                
+                                </div>
+                            </div>
+                            </div>
+                            <!-- End Modal -->
+
                 </div>
             </div>
         </div>

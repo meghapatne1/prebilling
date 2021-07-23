@@ -68,6 +68,18 @@ class HomeController extends Controller
       return view('customer_token',compact('productcustomers','customer_history'));
     }
     
+    public function update_customer_pswd(Request $request)
+    { 
+        $customer_id= Auth::user()->id;
+        $user = User::find($customer_id);
+        $user->password =  Hash::make($request->password);
+        $user->save();
+        return redirect()->back()->with('success','password updated successfully');
+
+   
+    }
+    
+    
     public function poshome()
     {
         $pos_user_mobile= Auth::user()->mobile;
@@ -76,6 +88,18 @@ class HomeController extends Controller
  
         return view('PosDashboard',compact('pos_user_info','pos_customers'));
     }
+
+    public function update_pos_pswd(Request $request)
+    {
+
+        $pos_id= Auth::user()->id;
+        $user = User::find($pos_id);
+        $user->password =  Hash::make($request->password);
+        $user->save();
+        return redirect()->back()->with('success','password updated successfully');
+ 
+    }
+    
 
       public function getCustomer($mobile)
     {

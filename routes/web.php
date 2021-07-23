@@ -25,6 +25,8 @@ Route::middleware(['is_customer'])->group(function () {
 Route::get('/customerhome', [App\Http\Controllers\HomeController::class, 'customerHome'])->name('customerhome');
 Route::get('/customertoken/{procus_id}', [App\Http\Controllers\HomeController::class, 'customer_token'])->name('customertoken');
 Route::get('/customer_account_detail', [App\Http\Controllers\HomeController::class, 'customer_account_detail'])->name('customer_account_detail');
+Route::post('/update_cus_pswd', [App\Http\Controllers\HomeController::class, 'update_customer_pswd'])->name('update_cus_pswd');
+
 
 
 });
@@ -34,6 +36,8 @@ Route::middleware(['is_pos'])->group(function () {
 Route::get('/poshome', [App\Http\Controllers\HomeController::class, 'posHome'])->name('poshome');
 Route::get('/getCustomer/{mobile}', [App\Http\Controllers\HomeController::class, 'getCustomer'])->name('getCustomer');
 Route::post('/use_token', [App\Http\Controllers\HomeController::class, 'use_token'])->name('use_token');
+Route::post('/update_pos_pswd', [App\Http\Controllers\HomeController::class, 'update_pos_pswd'])->name('update_pos_pswd');
+
 
 });
 

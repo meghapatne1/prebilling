@@ -6,41 +6,32 @@
                 border-bottom: 2px solid #dee2e6;
      }
 </style>
-<!----kanchan code start here-----
-<div class="container">
 
 
-          <h3 class="information-heading">Customer Profile Information</h3>
-      <div class="table-responsive">
-          <table class="table table-bordered" >
-          <tr class=" text-light table-row-data">
-          <td>Customer Name </td>
-          <td>Address</td>
-          <td>Mobile </td>
-          <td>Pincode</td>
-          <td>Status </td>
-          </tr>
-          <tr class="table-row-data">
-              <td> <span>{{$customer->name}}</span></td>
-              <td> <span>{{$customer->address}}</span></td>
-              <td> <span>{{$customer->mobile1}}</span></td>
-              <td> <span>{{$customer->pincode}}</span> </td>
-              <td> 
-              <span>
-              @if($customer->status == 0)
-              Deactive
-              @else
-              Active
-              @endif 
-              </span>
-              </td>
-              </tr>
-              </table>
-
-    </div>
-</div>----kancahan code end here--------->
-<!-------nisha start code here----------->
  <div class="container">
+     
+
+ @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+            @endif
+
+
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+
+            @if (session('error'))
+            
+            <div class="alert alert-danger">{{ session('error') }}</div>
+            @endif
  <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
                     <div class="card" style="box-shadow: 2px 3px 3px 2px #6a008a!important;">
@@ -61,6 +52,7 @@
                                         <th>Mobile</th>
                                         <th>Pincode</th>
                                         <th>Status</th>
+                                        <th>Change Password</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -77,18 +69,41 @@
                                             @endif 
 
                                         </td>
+                                        <td>
+                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#update">Change</button>
+                                        </td>
 
-                                    </tr>
-                                    
-                                    
-                                    
-                                    
+                                    </tr>           
                                 </tbody>
                                 
                              </table>
                             </div> 
 
                         </div>
+
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="update" role="dialog">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/update_cus_pswd" method="POST">
+                                    @csrf
+                                    <lable>Enter New Password </lable>
+                                    <input type="password" name="password" value=""/>  <br><br>
+                                    <input type="submit" name="submit" value="submit" >  
+                                    </form>
+                                </div>
+                                
+                                </div>
+                            </div>
+                            </div>
+                            <!-- End Modal -->
+
+
                     </div>
                 </div>
             </div>
