@@ -46,14 +46,14 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($pos_user_info as $item)
+          
             <tr class="table-row-data">
-            <td>{{$item->name}}</td>
-            <td>{{$item->mobile}}</td>
-            <td>{{$item->address}},{{$item->city}},{{$item->pincode}}</td>
+            <td>{{$pos_user_info->name}}</td>
+            <td>{{$pos_user_info->mobile}}</td>
+            <td>{{$pos_user_info->address}},{{$pos_user_info->city}},{{$pos_user_info->pincode}}</td>
             <td><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#update">Change</button></td>
             </tr>
-            @endforeach
+        
             </tbody>
             </table>
 
@@ -66,10 +66,10 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($pos_customers as $data)
+            @foreach($pos_customers as $item)
             <tr>
-            <td><a href="/getCustomer/{{$data->customer_mobile}}">{{$data->customer_name}}</a></td>
-            <td>{{$data->customer_mobile}}</td>
+            <td><a href="/getCustomer/{{$item->customer_id}}">{{$item->customer_name}}</a></td>
+            <td>{{$item->customer_id}}</td>
             </tr>
             @endforeach
             </tbody>

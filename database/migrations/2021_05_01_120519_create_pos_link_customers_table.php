@@ -16,8 +16,10 @@ class CreatePosLinkCustomersTable extends Migration
         Schema::create('poscustomers', function (Blueprint $table) {
             $table->id();
             $table->bigInteger("pos_mobile")->nullable();
-            $table->bigInteger("customer_mobile")->nullable();
+            $table->bigInteger("customer_id")->nullable();
             $table->bigInteger("user_mobile")->nullable();
+            $table->bigInteger("user_id")->nullable();
+            $table->bigInteger("pos_id");
             $table->Integer("status")->nullable();
             $table->string("customer_name")->nullable();
             $table->timestamps();

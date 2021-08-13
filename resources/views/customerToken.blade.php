@@ -126,7 +126,7 @@
                             @foreach($get_history as $history)
                             <tr>
                                <td>{{$history->product_name}}</td>
-                               <td>{{$history->customer_mobile}}</td>
+                               <td>{{$history->customer_id}}</td>
                                <td>{{$history->no_of_token_utilized}}</td>
                                <td>
                                {{ \Carbon\Carbon::parse( $history->created_at)->format('d-m-Y') }}</td>

@@ -37,7 +37,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $product_get = DB::table('products')->where('user_mobile','=',$user->mobile)->get();
+        $product_get = DB::table('products')->where('user_id','=',$user->id)->get();
         if((count($product_get)) > 0 ){
             return redirect()->route('add_customers_info');
         }
@@ -61,10 +61,10 @@ class HomeController extends Controller
     public function customer_token($procus_id)
     { 
        $procus_id=$procus_id; 
-       $customer_history=DB::table('customer_histories')->where('customer_mobile','=',Auth::user()->mobile)
+       $customer_history=DB::table('customer_histories')->where('customer_id','=',Auth::user()->id)
        ->where('pro_cus_id','=',$procus_id)->get();
-       $productcustomers=DB::table('productcustomers')->where('id','=',$procus_id)->first();
-
+       $produccustomer_historytcustomers=DB::table('productcustomers')->where('id','=',$procus_id)->first();
+dd(Auth::user()->id);
       return view('customer_token',compact('productcustomers','customer_history'));
     }
     
@@ -83,9 +83,9 @@ class HomeController extends Controller
     public function poshome()
     {
         $pos_user_mobile= Auth::user()->mobile;
-        $pos_user_info = DB::table('pointofsales')->where('mobile','=',$pos_user_mobile)->get();
-        $pos_customers = DB::table('poscustomers')->where('pos_mobile','=',$pos_user_mobile)->get();
- 
+        $pos_user_info = DB::table('pointofsales')->where('mobile','=',$pos_user_mobile)->first();
+        $pos_customers = DB::table('poscustomers')->where('pos_id','=',$pos_user_info->id)->get();
+
         return view('PosDashboard',compact('pos_user_info','pos_customers'));
     }
 
@@ -101,13 +101,13 @@ class HomeController extends Controller
     }
     
 
-      public function getCustomer($mobile)
+      public function getCustomer($id)
     {
-        $get_customers = DB::table('productcustomers')->where('customer_mobile','=',$mobile)->get();
-       
-        $get_history = DB::table('customer_histories')->where('user_mobile','=',Auth::user()->mobile)
-        ->where('customer_mobile','=',$mobile)->get();
-       
+        $get_customers = DB::table('productcustomers')->where('customer_id','=',$id)->get();
+      
+        $get_history = DB::table('customer_histories')->where('user_id','=',Auth::user()->id)
+        ->where('customer_id','=',$id)->get();
+        
         return view('customerToken',compact('get_customers','get_history'));
     }
 
@@ -116,7 +116,7 @@ class HomeController extends Controller
         
         DB::beginTransaction();
         try{
-    
+   
         $customer = Customer::find($request->customer_id);
         $pro_customer_data = Productcustomer::find($request->pro_cus_id);
             // validation if remaning token is less than use token it will not allow
@@ -133,7 +133,6 @@ class HomeController extends Controller
         $customer_history = New Customer_history;
         $customer_history->customer_id=$request->customer_id;
         $customer_history->customer_name=$customer->name;
-        $customer_history->customer_mobile=$request->customer_mobile;
         $customer_history->product_name=$pro_customer_data->product_name;
         $customer_history->cost_of_per_token=$pro_customer_data->cost_of_per_token;
         $customer_history->no_of_token_utilized=$request->no_of_token_utilized;
@@ -143,6 +142,7 @@ class HomeController extends Controller
         $customer_history->pro_cus_id= $request->pro_cus_id;
         $user = Auth::user();
         $customer_history->user_id=$user->id;
+        $customer_history->user_name=$user->name;
         $customer_history->user_mobile=$user->mobile;
         $customer_history->save();
         DB::commit();
@@ -169,8 +169,8 @@ class HomeController extends Controller
 
     public function return_dashboard()
     {
-        $product_data = DB::table('products')->where('user_mobile','=',Auth::user()->mobile)->get();
-        $customer_data = DB::table('customers')->where('user_mobile','=',Auth::user()->mobile)->get();
+        $product_data = DB::table('products')->where('user_id','=',Auth::user()->id)->get();
+        $customer_data = DB::table('customers')->where('user_id','=',Auth::user()->id)->get();
       
         return view('dashboard',compact('product_data','customer_data'));
     }
@@ -178,7 +178,7 @@ class HomeController extends Controller
     public function addcustomers()
     {
         $user = Auth::user();
-        $customer_get = DB::table('customers')->where('user_mobile','=',$user->mobile)->get();
+        $customer_get = DB::table('customers')->where('user_id','=',$user->id)->get();
         if((count($customer_get)) > 0 ){
             return redirect()->route('dashboard');
         }
@@ -239,6 +239,7 @@ class HomeController extends Controller
             $customer_info->status = 1;
             $user = Auth::user();
             $customer_info->user_mobile = $user->mobile;
+            $customer_info->user_id = $user->id;
             $customer_info->save();
             $user_table = new User;
             $user_table->name = $request['name'][$key];
@@ -294,7 +295,7 @@ class HomeController extends Controller
     public function show()
     {
         $user = Auth::user();
-        $customerdata = DB::table('customers')->where('user_mobile','=',$user->mobile)->get();
+        $customerdata = DB::table('customers')->where('user_id','=',$user->id)->get();
         return view('viewcustomer',compact('customerdata'));
     } 
 
@@ -322,9 +323,9 @@ class HomeController extends Controller
     {
         $customerdata = Customer::where('id', $id)->get();
         foreach($customerdata as $item){
-           $user_number = $item->user_mobile;
+           $user_id = $item->user_mobile;
         }
-        $getProduct = DB::table('products')->where('user_mobile','=',$user_number)->get();
+        $getProduct = DB::table('products')->where('user_id','=',$user_id)->get();
         return view('editcustomer',compact('customerdata','getProduct'));
     }
 
@@ -354,9 +355,10 @@ class HomeController extends Controller
         $customerdata = Customer::where('id', $customerid)->get();
     
         foreach($customerdata as $item){
-           $user_number = $item->user_mobile;
+           $user_id = $item->user_id;
         }
-        $getProduct = DB::table('products')->where('user_mobile','=',$user_number)->get();
+        
+        $getProduct = DB::table('products')->where('user_id','=',$user_id)->get();
         return view('customer_account',compact('getProduct','customerdata'));
 
     }
@@ -380,6 +382,7 @@ class HomeController extends Controller
         $customer->token_expire_date = $request->token_expire_date;
         $customer->customer_mobile = $request->customer_mobile;
         $customer->user_mobile = Auth::user()->mobile;
+        $customer->user_id = Auth::user()->id;
         $customer->customer_id = $request->customer_id;
         $customer->save();
   
@@ -439,13 +442,14 @@ class HomeController extends Controller
         $customer_history = New Customer_history;
         $customer_history->customer_id=$customer->id;
         $customer_history->customer_name=$customer->name;
-        $customer_history->customer_mobile=$customer->mobile1;
+        // $customer_history->customer_mobile=$customer->mobile1;
         $customer_history->product_name=$customer_data->product_name;
         $customer_history->cost_of_per_token=$customer_data->cost_of_per_token;
         $customer_history->no_of_token_utilized=$request->no_of_token_utilized;
         $customer_history->remaning_token=$customer_data->remaning_token;
         $customer_history->total_token=$customer_data->total_token;
         $customer_history->user_mobile= Auth::user()->mobile;
+        $customer_history->user_name= Auth::user()->name;
         $customer_history->pro_cus_id= $request->procust_id;
         $user = Auth::user();
         $customer_history->user_id=$user->id;
@@ -479,7 +483,7 @@ class HomeController extends Controller
     }
     public function customerhistory(Request $request){
 
-        $customer_history_data= DB::table('customer_histories')->where('user_mobile','=', Auth::user()->mobile)->get();
+        $customer_history_data= DB::table('customer_histories')->get();
         return view('customerHistory',compact('customer_history_data'));
         
     }
@@ -487,7 +491,7 @@ class HomeController extends Controller
     
     public function add_point_of_sale(Request $request){
 
-        $pos_data = DB::table('pointofsales')->where('user_mobile','=', Auth::user()->mobile)->get();
+        $pos_data = DB::table('pointofsales')->where('user_id','=', Auth::user()->id)->get();
 
         return view('add_pos',compact('pos_data'));  
     }
@@ -519,6 +523,7 @@ class HomeController extends Controller
             $poinofsales->status = 1;
             $user = Auth::user();
             $poinofsales->user_mobile = $user->mobile;
+            $poinofsales->user_id = $user->id;
             $poinofsales->save();
             $user_table = new User;
             $user_table->name = $request->name;
@@ -543,9 +548,9 @@ class HomeController extends Controller
     public function deletepos($id){
         DB::beginTransaction();
         try{
-        $pos_mobile = Pointofsale::where('id', $id)->select('mobile')->first();
-        $pos = Pointofsale::where('id', $id)->where('user_mobile', Auth::user()->mobile)->delete();
-        $User = User::where('mobile',$pos_mobile->mobile)->delete();
+        $pos_id = Pointofsale::where('id', $id)->select('id')->first();
+        $pos = Pointofsale::where('id', $id)->where('user_id', Auth::user()->id)->delete();
+        $User = User::where('id',$pos_id->id)->delete();
         DB::commit();
         return redirect()->route('add_pos')->with('success','Data deleted successfully');
         
@@ -632,7 +637,7 @@ public function editpos($id){
     }
 
     public function saveproduct(Request $request){
-
+        
                 $request->validate([
                     'pro_name' => 'required',
                     'pro_price' => 'required |integer',
@@ -645,6 +650,8 @@ public function editpos($id){
             $product->pro_unit = $request->pro_unit;
             $user = Auth::user();
             $product->user_mobile = $user->mobile;
+            $product->user_id = $user->id;
+          
             $product->save();
             
         return redirect()->route('dashboard')->with('success','Product added successfully...');
@@ -658,40 +665,44 @@ public function editpos($id){
     }
     
 
-    public function pos_link_customers($mobile_pos)
+    public function pos_link_customers($pos_id)
     {
-        $get_customers=DB::table('customers')->where('user_mobile','=',Auth::user()->mobile)->get();
-        $mobile=$mobile_pos;
 
-        $get_poscustomers=DB::table('poscustomers')->where('pos_mobile','=',$mobile)->get();
-
-        return view('pos_link_customers',compact('get_customers','mobile','get_poscustomers')); 
+        $get_customers=DB::table('customers')->where('user_id','=',Auth::user()->id)->get();
+        $pos_mobile=DB::table('pointofsales')->where('id','=',$pos_id)->select('mobile')->first();
+        $get_poscustomers = DB::table('poscustomers')->where('pos_mobile','=',$pos_mobile->mobile)->get();
+        $mobile=$pos_mobile->mobile;
+        return view('pos_link_customers',compact('get_customers','mobile','pos_id','get_poscustomers')); 
     
     }
 
     
     public function save_pos_customers(Request $request)
     {
-        $request->validate([
-            'customer_mobile' => 'required',
-        ]); 
-         $product_data = $request['customer_mobile'];
-       
+    
+        
+         $product_data = $request['customer_id'];
+      
          $count=Array();
          foreach ($product_data as $key => $val) {
-         $get_customer_name=DB::table('customers')->where('mobile1','=',$request['customer_mobile'][$key])
+         $get_customer_name=DB::table('customers')->where('id','=',$request['customer_id'][$key])
          ->select('name')->first();
+       
            $pos_customer = New Poscustomer;
            $pos_customer->pos_mobile = $request->pos_mobile;
-           $pos_customer->customer_mobile =  $request['customer_mobile'][$key];
+           $pos_customer->customer_id =  $request['customer_id'][$key];
            $pos_customer->customer_name =  $get_customer_name->name;
            $user = Auth::user();
            $pos_customer->user_mobile = $user->mobile;
+           $pos_customer->user_id = $user->id;
+           $pos_customer->pos_id =  $request->pos_id;
            $pos_customer->status = 1;
+          
            $pos_customer->save();
+      
            $count[]=$pos_customer;
          }
-           return redirect()->route('add_pos')->with('success','Customers link to pos successfully');
+           return redirect()->back()->with('success','Customers link to pos successfully');
     }
 
     public function delete_pos_customer($id){

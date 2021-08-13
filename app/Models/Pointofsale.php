@@ -13,4 +13,5 @@ class Pointofsale extends Model
        'name','address', 'city','mobile', 'pincode','user_mobile','status'
     ];
 
+
 }

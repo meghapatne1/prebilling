@@ -21,11 +21,11 @@ class CustomerTableHistory extends Migration
             $table->bigInteger("no_of_token_utilized")->nullable();
             $table->bigInteger("remaning_token")->nullable();
             $table->bigInteger("total_token")->nullable();
-            $table->bigInteger("user_id")->nullable();
             $table->Integer("customer_id")->nullable();
             $table->Integer("pro_cus_id")->nullable();
-            $table->bigInteger("customer_mobile")->nullable();
             $table->bigInteger("user_mobile")->nullable();
+            $table->bigInteger("user_id");
+            $table->bigInteger("user_name")->nullable();
             $table->timestamps();
         });
     }

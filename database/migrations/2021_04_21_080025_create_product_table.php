@@ -19,6 +19,7 @@ class CreateProductTable extends Migration
             $table->bigInteger("pro_price")->nullable();
             $table->string("pro_unit")->nullable();
             $table->bigInteger("user_mobile")->nullable();
+            $table->bigInteger("user_id");
             $table->timestamps();
         });
     }

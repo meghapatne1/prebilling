@@ -34,7 +34,7 @@ Route::post('/update_cus_pswd', [App\Http\Controllers\HomeController::class, 'up
 Route::middleware(['is_pos'])->group(function () {
 
 Route::get('/poshome', [App\Http\Controllers\HomeController::class, 'posHome'])->name('poshome');
-Route::get('/getCustomer/{mobile}', [App\Http\Controllers\HomeController::class, 'getCustomer'])->name('getCustomer');
+Route::get('/getCustomer/{id}', [App\Http\Controllers\HomeController::class, 'getCustomer'])->name('getCustomer');
 Route::post('/use_token', [App\Http\Controllers\HomeController::class, 'use_token'])->name('use_token');
 Route::post('/update_pos_pswd', [App\Http\Controllers\HomeController::class, 'update_pos_pswd'])->name('update_pos_pswd');
 
@@ -105,7 +105,7 @@ Route::post('/update_product', [App\Http\Controllers\HomeController::class, 'upd
 Route::get('/addcustomer', [App\Http\Controllers\HomeController::class, 'return_customer'])->name('addcustomer');
 
 //pos
-Route::get('/pos_link_customers/{mobile}', [App\Http\Controllers\HomeController::class, 'pos_link_customers'])->name('pos_link_customers');
+Route::get('/pos_link_customers/{id}', [App\Http\Controllers\HomeController::class, 'pos_link_customers'])->name('pos_link_customers');
 Route::post('/save_pos_customers', [App\Http\Controllers\HomeController::class, 'save_pos_customers'])->name('save_pos_customers');
 
 Route::get('/delete_pos_customer/{id}', [App\Http\Controllers\HomeController::class, 'delete_pos_customer'])->name('delete_pos_customer');

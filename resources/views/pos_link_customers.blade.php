@@ -119,7 +119,9 @@
 
             <li class="checkbox">
 
-              <label class="checkbox-style-label"><input type="checkbox" name="customer_mobile[]" value="{{$item->mobile1}}">
+              <label class="checkbox-style-label">
+              <input type="checkbox" name="customer_id[]" value="{{$item->id}}">
+
                 {{$item->name}}-{{$item->mobile1}}
               </label>
 
@@ -128,6 +130,7 @@
             @endforeach
           </div>
           <input type="hidden" value="{{$mobile}}" name="pos_mobile">
+          <input type="hidden" value="{{$pos_id}}" name="pos_id">
           <input class="btn btn-submit" type="submit" name="submit" value="Submit">
         </form>
         <br>
@@ -142,7 +145,6 @@
           <thead>
             <tr class="table-row">
               <th>Customer Name</th>
-              <th>Customer Mobile</th>
               <th>Unlink Customer</th>
             </tr>
           </thead>
@@ -151,7 +153,6 @@
             @foreach($get_poscustomers as $data)
             <tr class="table-row-data">
               <td>{{$data->customer_name}}</td>
-              <td>{{$data->customer_mobile}}</td>
               <td><a href="/delete_pos_customer/{{$data->id}}" class="delete-button-style">Delete</td>
             </tr>
             @endforeach
@@ -194,7 +195,7 @@
 </script>
 <script>
   function selects() {
-    var ele = document.getElementsByName('customer_mobile[]');
+    var ele = document.getElementsByName('customer_id[]');
     for (var i = 0; i < ele.length; i++) {
       if (ele[i].type == 'checkbox')
         ele[i].checked = true;
@@ -202,7 +203,7 @@
   }
 
   function deSelect() {
-    var ele = document.getElementsByName('customer_mobile[]');
+    var ele = document.getElementsByName('customer_id[]');
     for (var i = 0; i < ele.length; i++) {
       if (ele[i].type == 'checkbox')
         ele[i].checked = false;

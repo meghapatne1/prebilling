@@ -21,6 +21,7 @@ class CreateCustomerTable extends Migration
             $table->string('city')->nullable();
             $table->bigInteger('mobile1')->unique();
             $table->bigInteger('user_mobile')->nullable();
+            $table->bigInteger('user_id');
             $table->boolean('status')->nullable()->default(1);  
             $table->bigInteger('pincode')->nullable();           
             $table->timestamps();

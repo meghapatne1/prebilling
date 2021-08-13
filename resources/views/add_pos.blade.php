@@ -203,7 +203,7 @@
                                 @else
                                 <td>Deactive</td>
                                 @endif
-                                <td><a href="/pos_link_customers/{{$item->mobile}}" style="color:blueviolet!important;"> Link to customer</a></td>
+                                <td><a href="/pos_link_customers/{{$item->id}}" style="color:blueviolet!important;"> Link to customer</a></td>
                                 <td class="delete-edit-td-style">
                                     <a href="/deletepos/{{$item->id}}" class="btn btn-danger btn-sm delete-style">Delete</a>
                                     <a href="/editpos/{{$item->id}}" class="btn btn-primary btn-sm edit-style">Edit</a>

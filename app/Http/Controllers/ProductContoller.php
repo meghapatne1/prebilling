@@ -34,6 +34,7 @@ class ProductContoller extends Controller
             $product->pro_unit = $request['pro_unit'][$key];
             $user = Auth::user();
             $product->user_mobile = $user->mobile;
+            $product->user_id = $user->id;
             $product->save();
             $count[]=$product;
         }
